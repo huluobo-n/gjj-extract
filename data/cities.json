@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "title": "公积金装修/物业费提取额度测算",
+    "fetchedAt": "2026-11-06",
+    "timezone": "Asia/Shanghai",
+    "disclaimer": "结果仅供参考，以当地公积金中心为准。本页非官方产品。",
+    "nationalOrdinance": {
+      "name": "新修订《住房公积金管理条例》",
+      "effectiveDate": "2026-09-20",
+      "summary": "提取情形扩至9种，新增装修自住住房、支付自住住房物业费等。具体额度与条件由各设区市制定。",
+      "sources": [
+        {
+          "title": "新华网：今天起装修、交物业费都能用这笔钱了",
+          "url": "https://www.xinhuanet.com/politics/20260920/a3f75681aff247c39e8f4af7a14219a7/c.html",
+          "fetchedAt": "2026-11-06"
+        },
+        {
+          "title": "央视网财经：条例今起正式实施",
+          "url": "https://finance.cctv.cn/2026/09/20/ARTIKIG4Q7bPc3BTJfsQ0tR8260920.shtml",
+          "fetchedAt": "2026-11-06"
+        },
+        {
+          "title": "中国政府网政策解读",
+          "url": "https://www.gov.cn/zhengce/202608/content_7078605.htm",
+          "fetchedAt": "2026-11-06"
+        }
+      ]
+    }
+  },
+  "cities": [
+    {
+      "id": "zhengzhou",
+      "name": "郑州",
+      "province": "豫",
+      "default": true,
+      "calculable": true,
+      "notes": [
+        "每户家庭仅可选一套自住住房办理装修或物业类提取。",
+        "装修：住房须满6个月且未办过装修提取；有效证明时间在5年（含）以内或15年（含）以上。",
+        "物业费：每自然年度限一次，额度不累计、不结转。"
+      ],
+      "renovation": {
+        "status": "verified",
+        "method": "area_rate_cap",
+        "ratePerSqm": 1500,
+        "maxYuan": 150000,
+        "oncePerPerson": true,
+        "familyOneHome": true,
+        "docTitle": "关于支持自住住房装修提取住房公积金有关事项的通知",
+        "effectiveNote": "2026-11-04 发布之日起施行（媒体转述）",
+        "summary": "建筑面积×1500元/㎡，家庭合计最高不超过15万元。",
+        "sources": [
+          {
+            "title": "第一财经转述郑州公积金装修提取通知",
+            "url": "https://www.yicai.com/news/103425923.html",
+            "fetchedAt": "2026-11-06"
+          },
+          {
+            "title": "中原网：郑州支持自住住房装修提取（条件与FAQ）",
+            "url": "https://zynews.cn/yaowen/2026/11/04/209243.html",
+            "fetchedAt": "2026-11-06"
+          },
+          {
+            "title": "郑州公积金中心征求意见稿通告（背景）",
+            "url": "https://zzgjj.zhengzhou.gov.cn/suggesting/10270626.jhtml",
+            "fetchedAt": "2026-11-06"
+          }
+        ]
+      },
+      "propertyFee": {
+        "status": "verified",
+        "method": "area_tiers",
+        "docNo": "郑公积金〔2026〕24号",
+        "docTitle": "郑州住房公积金管理中心关于优化调整住房公积金提取政策的通知",
+        "issuedDate": "2026-09-28",
+        "publishedDate": "2026-09-29",
+        "frequency": "每自然年度每家庭一套、每人一次，双方合计≤档位额度；不累计不结转",
+        "tiers": [
+          {
+            "maxSqmInclusive": 90,
+            "annualYuan": 2400,
+            "label": "≤90㎡"
+          },
+          {
+            "maxSqmInclusive": 144,
+            "annualYuan": 3800,
+            "label": "90–144㎡（含）"
+          },
+          {
+            "maxSqmInclusive": null,
+            "annualYuan": 4300,
+            "label": ">144㎡"
+          }
+        ],
+        "related": {
+          "heatingTiers": [
+            {
+              "maxSqmInclusive": 90,
+              "annualYuan": 2100
+            },
+            {
+              "maxSqmInclusive": 144,
+              "annualYuan": 3200
+            },
+            {
+              "maxSqmInclusive": null,
+              "annualYuan": 3700
+            }
+          ],
+          "parkingManagementYuan": 1500
+        },
+        "summary": "按建筑面积分三档核定年度物业费提取上限：2400 / 3800 / 4300 元。",
+        "sources": [
+          {
+            "title": "郑州公积金中心原文（含文号郑公积金〔2026〕24号）",
+            "url": "https://zzgjj.zhengzhou.gov.cn/extract/10273615.jhtml",
+            "fetchedAt": "2026-11-06"
+          },
+          {
+            "title": "郑州市政务公开全文",
+            "url": "https://public.zhengzhou.gov.cn/D0105Y/10273511.jhtml",
+            "fetchedAt": "2026-11-06"
+          },
+          {
+            "title": "政策解读（政务公开）",
+            "url": "https://public.zhengzhou.gov.cn/D3602Y/10273543.jhtml",
+            "fetchedAt": "2026-11-06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nanjing",
+      "name": "南京",
+      "province": "苏",
+      "default": false,
+      "calculable": true,
+      "notes": [
+        "装修：发票开具起1年内申请；同一家庭同一套住房限一次；每㎡≤1000元且家庭合计≤15万。",
+        "物业费：有发票按实付且年≤5000；无发票年≤1000；每自然年度一次。"
+      ],
+      "renovation": {
+        "status": "verified",
+        "method": "min_invoice_area_rate_cap",
+        "ratePerSqm": 1000,
+        "maxYuan": 150000,
+        "requiresInvoice": true,
+        "summary": "min(发票金额, 面积×1000, 15万元)。",
+        "sources": [
+          {
+            "title": "南京市政府：装修与物业费落地细则",
+            "url": "https://www.nanjing.gov.cn/msxx/202609/t20260921_5914743.html",
+            "fetchedAt": "2026-11-06"
+          }
+        ]
+      },
+      "propertyFee": {
+        "status": "verified",
+        "method": "invoice_or_flat_cap",
+        "withInvoiceMaxYuan": 5000,
+        "withoutInvoiceMaxYuan": 1000,
+        "frequency": "同一家庭每自然年度限一次",
+        "summary": "有发票：min(实付, 5000)；无发票：上限1000。",
+        "sources": [
+          {
+            "title": "南京市政府：装修与物业费落地细则",
+            "url": "https://www.nanjing.gov.cn/msxx/202609/t20260921_5914743.html",
+            "fetchedAt": "2026-11-06"
+          },
+          {
+            "title": "南京公积金中心：如何提取支付物业费",
+            "url": "https://www.nanjing.gov.cn/zzb/hdhy/hygq_72666/202610/t20261021_6022765.html",
+            "fetchedAt": "2026-11-06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "hangzhou",
+      "name": "杭州",
+      "province": "浙",
+      "default": false,
+      "calculable": true,
+      "notes": [
+        "装修（资质企业发票）：不超过发票价税合计，最高25万；产权满6个月。",
+        "装修（15年+适老化/翻新定额）：面积×1000元/㎡，可不提供发票合同。",
+        "再次装修提取须距上次满10年。",
+        "物业费：家庭名下1套，每年1次，合计≤实付且≤10000元。"
+      ],
+      "renovation": {
+        "status": "verified",
+        "method": "hangzhou_dual",
+        "invoiceMaxYuan": 250000,
+        "agingRatePerSqm": 1000,
+        "docNo": "杭房公委〔2026〕6号",
+        "summary": "发票路径最高25万；15年+适老化/翻新按面积×1000。",
+        "sources": [
+          {
+            "title": "杭州市人民政府公报：完善使用政策解读",
+            "url": "https://zfgb.hangzhou.gov.cn/15/110220263/t116220263104/530811.shtml",
+            "fetchedAt": "2026-11-06"
+          },
+          {
+            "title": "每经网转述：最高不超过25万元",
+            "url": "https://www.nbd.com.cn/articles/2026-10-15/4605017.html",
+            "fetchedAt": "2026-11-06"
+          }
+        ]
+      },
+      "propertyFee": {
+        "status": "verified",
+        "method": "min_bill_cap",
+        "annualMaxYuan": 10000,
+        "frequency": "每年家庭1套1次；当年未提不补办",
+        "summary": "min(12个月实付物业相关支出, 10000元)。",
+        "sources": [
+          {
+            "title": "杭州网：物业费提取线上办理已开通",
+            "url": "https://hznews.hangzhou.com.cn/chengshi/content/2026-05/07/content_9217430.htm",
+            "fetchedAt": "2026-11-06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "jinan",
+      "name": "济南",
+      "province": "鲁",
+      "default": false,
+      "calculable": true,
+      "calculableScenes": [
+        "propertyFee"
+      ],
+      "notes": [
+        "物业费：夫妻合计每年≤2500元。",
+        "装修提取本地额度细则本轮未核到官方全文 → 标待核对，本页暂不可算装修。",
+        "个贷率达90%时物业费等提取可能暂缓。"
+      ],
+      "renovation": {
+        "status": "pending",
+        "method": null,
+        "summary": "待核对：尚未检索到济南装修提取明确额度细则。",
+        "sources": []
+      },
+      "propertyFee": {
+        "status": "verified",
+        "method": "flat_cap",
+        "annualMaxYuan": 2500,
+        "frequency": "每自然年度一次",
+        "summary": "缴存人及配偶合计年度提取额度不超过2500元。",
+        "sources": [
+          {
+            "title": "大众新闻/全景山东：济南公积金新政（2026-04-20起）",
+            "url": "https://sd.sdnews.com.cn/yw/202604/t20260421_4667323.htm",
+            "fetchedAt": "2026-11-06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "shanghai",
+      "name": "上海",
+      "province": "沪",
+      "default": false,
+      "calculable": false,
+      "notes": [
+        "国家条例已允许装修/物业费提取，但上海本地额度、材料、频次细则本轮未核到可计算口径。",
+        "对照展示，暂不开放测算。"
+      ],
+      "renovation": {
+        "status": "pending",
+        "method": null,
+        "summary": "待核对：本地实施细则未核到。",
+        "sources": []
+      },
+      "propertyFee": {
+        "status": "pending",
+        "method": null,
+        "summary": "待核对：本地实施细则未核到。",
+        "sources": []
+      }
+    }
+  ]
+}
