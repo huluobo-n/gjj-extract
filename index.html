@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>公积金装修/物业费提取额度测算 | 郑州默认·多城对照</title>
+  <meta name="description" content="测算郑州等地公积金装修提取与物业费提取上限。默认郑州：装修约1500元/㎡最高15万；物业费按郑公积金〔2026〕24号分档。结果仅供参考，以当地公积金中心为准。" />
+  <meta name="keywords" content="公积金提取,装修提取,物业费提取,郑州公积金,额度测算" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://gjj.hpn6.com/" />
+  <meta property="og:title" content="公积金装修/物业费提取额度测算" />
+  <meta property="og:description" content="郑州默认·多城对照。醒目提示：以当地公积金中心为准。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gjj.hpn6.com/" />
+  <style>
+    :root {
+      --bg: #f3f5f8;
+      --card: #fff;
+      --ink: #1a1f2e;
+      --muted: #5c6578;
+      --line: #e4e8ef;
+      --brand: #1d4ed8;
+      --brand-soft: #e8eefc;
+      --warn: #b45309;
+      --warn-bg: #fff7ed;
+      --ok: #047857;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(26, 31, 46, 0.06);
+      --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: linear-gradient(180deg, #e8eefc 0%, var(--bg) 220px);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 20px 16px 64px; }
+    header h1 { font-size: 1.4rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+    .sub { color: var(--muted); font-size: 0.92rem; margin: 0 0 16px; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .badge {
+      font-size: 0.75rem; background: var(--brand-soft); color: var(--brand);
+      padding: 4px 10px; border-radius: 999px; font-weight: 600;
+    }
+    .alert {
+      background: var(--warn-bg); border: 1.5px solid #fdba74; color: #7c2d12;
+      border-radius: var(--radius); padding: 14px; margin-bottom: 16px; font-size: 0.9rem;
+    }
+    .alert strong { display: block; color: var(--warn); margin-bottom: 6px; font-size: 0.95rem; }
+    .alert ul { margin: 0; padding-left: 1.1em; }
+    .alert li { margin: 4px 0; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 16px; margin-bottom: 14px; box-shadow: var(--shadow);
+    }
+    .card h2 {
+      font-size: 1.02rem; margin: 0 0 12px; display: flex; align-items: center; gap: 8px;
+    }
+    .step {
+      width: 22px; height: 22px; border-radius: 50%; background: var(--brand); color: #fff;
+      font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center;
+    }
+    label { display: block; font-size: 0.86rem; color: var(--muted); margin-bottom: 6px; }
+    select, input[type="number"], input[type="text"], input[type="tel"] {
+      width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 10px;
+      font-size: 1rem; font-family: inherit; background: #fff; color: var(--ink);
+    }
+    select:focus, input:focus { outline: 2px solid #93c5fd; border-color: var(--brand); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 520px) { .grid-2 { grid-template-columns: 1fr; } }
+    .hint { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+    .city-meta {
+      margin-top: 12px; padding: 12px; background: #f8fafc; border-radius: 10px;
+      font-size: 0.86rem; color: var(--muted);
+    }
+    .city-meta b { color: var(--ink); }
+    .scene-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .scene-tab {
+      border: 1.5px solid var(--line); background: #fff; border-radius: 12px;
+      padding: 12px; cursor: pointer; font-family: inherit; font-size: 0.92rem; font-weight: 600;
+      color: var(--ink); text-align: left;
+    }
+    .scene-tab.active { border-color: var(--brand); background: var(--brand-soft); color: var(--brand); }
+    .scene-tab small { display: block; font-weight: 400; color: var(--muted); margin-top: 4px; font-size: 0.78rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; width: 100%;
+      padding: 14px 16px; border: none; border-radius: 12px; background: var(--brand);
+      color: #fff; font-size: 1.05rem; font-weight: 700; cursor: pointer; font-family: inherit;
+    }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn:active:not(:disabled) { transform: scale(0.99); }
+    .btn.secondary {
+      background: #fff; color: var(--brand); border: 1.5px solid var(--brand); margin-top: 10px;
+    }
+    .results { display: none; }
+    .results.show { display: block; }
+    .result-hero {
+      border-radius: 12px; padding: 16px; background: #eff6ff; border: 1px solid #bfdbfe; margin-bottom: 12px;
+    }
+    .result-hero .lbl { font-size: 0.82rem; color: var(--muted); }
+    .result-hero .val { font-size: 1.8rem; font-weight: 800; color: var(--brand); margin-top: 4px; }
+    .result-hero .subv { font-size: 0.86rem; color: var(--muted); margin-top: 6px; }
+    .notes-box {
+      font-size: 0.86rem; color: var(--muted); background: #f8fafc; border-radius: 10px; padding: 12px;
+    }
+    .notes-box ul { margin: 6px 0 0; padding-left: 1.1em; }
+    .stats-bar {
+      display: flex; gap: 10px; flex-wrap: wrap; font-size: 0.8rem; color: var(--muted); margin: 8px 0 16px;
+    }
+    .stats-bar span {
+      background: #fff; border: 1px solid var(--line); padding: 6px 10px; border-radius: 999px;
+    }
+    .lead-form .row { margin-bottom: 10px; }
+    .check-row { display: flex; align-items: center; gap: 8px; margin: 10px 0; font-size: 0.9rem; }
+    .check-row input { width: auto; }
+    .check-row label { margin: 0; color: var(--ink); }
+    footer {
+      margin-top: 28px; font-size: 0.78rem; color: var(--muted);
+      border-top: 1px solid var(--line); padding-top: 16px;
+    }
+    footer a { color: var(--brand); }
+    .pending { color: var(--warn); font-weight: 600; }
+    .hidden { display: none !important; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 8px; }
+    .compare-table th, .compare-table td {
+      border: 1px solid var(--line); padding: 8px; text-align: left; vertical-align: top;
+    }
+    .compare-table th { background: #f8fafc; }
+    footer .site-nav { margin: 8px 0 10px; }
+    footer .site-nav a { margin: 0 2px; text-decoration: none; }
+    footer .site-nav a:hover { text-decoration: underline; }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2118305643241262" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge-row">
+        <span class="badge">独立测算 · 非公积金中心官方</span>
+        <span class="badge">默认郑州 · 多城对照</span>
+      </div>
+      <h1>公积金装修 / 物业费提取额度测算</h1>
+      <p class="sub">输入面积或账单额，估算可提取上限。国家条例自 2026-09-20 起允许装修与物业费提取；额度一城一策，本页以当地公开文件整理。</p>
+    </header>
+
+    <div class="alert" role="alert">
+      <strong>⚠️ 办理前必读</strong>
+      <ul>
+        <li><b>以当地公积金中心为准</b>：本页结果仅供参考，不冒充官方审批结论，政策可能调整。</li>
+        <li><b>账户余额限制</b>：实际可提金额还受个人/配偶账户余额、是否有逾期贷款等约束，可能低于上限。</li>
+        <li><b>频次与房屋条件</b>：多数城市限一套房、装修常限一次、物业费按自然年；请对照本地材料清单办理。</li>
+      </ul>
+    </div>
+
+    <div class="stats-bar" aria-live="polite">
+      <span>本机测算次数：<b id="calcCount">0</b></span>
+      <span>本机留联数：<b id="leadCount">0</b></span>
+      <span>成功线：测算≥30 或 留联≥5</span>
+    </div>
+
+    <section class="card">
+      <h2><span class="step">1</span> 选择场景</h2>
+      <div class="scene-tabs" role="tablist">
+        <button type="button" class="scene-tab active" id="tabReno" data-scene="renovation" role="tab" aria-selected="true">
+          装修提取
+          <small>按面积/发票估算上限</small>
+        </button>
+        <button type="button" class="scene-tab" id="tabProp" data-scene="propertyFee" role="tab" aria-selected="false">
+          物业费提取
+          <small>按面积分档或年封顶</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2><span class="step">2</span> 选择城市</h2>
+      <label for="city">城市</label>
+      <select id="city"></select>
+      <div class="city-meta" id="cityMeta">加载中…</div>
+      <details style="margin-top:12px">
+        <summary style="cursor:pointer;font-weight:600;color:var(--brand)">多城对照速览</summary>
+        <div style="overflow-x:auto">
+          <table class="compare-table" id="compareTable">
+            <thead>
+              <tr><th>城市</th><th>装修</th><th>物业费</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="card" id="inputsCard">
+      <h2><span class="step">3</span> 填写最少字段</h2>
+      <div id="fieldsReno">
+        <div class="grid-2">
+          <div>
+            <label for="areaSqm">房屋建筑面积（㎡）</label>
+            <input type="number" id="areaSqm" min="1" max="1000" step="0.1" value="100" inputmode="decimal" />
+            <p class="hint">以不动产权证 / 购房合同登记面积为准。</p>
+          </div>
+          <div id="invoiceWrap">
+            <label for="invoiceYuan">装修发票金额（元，可选）</label>
+            <input type="number" id="invoiceYuan" min="0" max="5000000" step="1" value="" inputmode="decimal" placeholder="有发票城市请填写" />
+            <p class="hint" id="invoiceHint">郑州定额测算可不填；南京/杭州发票路径需要。</p>
+          </div>
+        </div>
+        <div id="hzModeWrap" class="hidden" style="margin-top:12px">
+          <label for="hzMode">杭州装修路径</label>
+          <select id="hzMode">
+            <option value="invoice">资质企业装修（按发票，最高25万）</option>
+            <option value="aging">产权满15年适老化/翻新（面积×1000）</option>
+          </select>
+        </div>
+      </div>
+      <div id="fieldsProp" class="hidden">
+        <div class="grid-2">
+          <div>
+            <label for="propArea">房屋建筑面积（㎡）</label>
+            <input type="number" id="propArea" min="1" max="1000" step="0.1" value="100" inputmode="decimal" />
+            <p class="hint">郑州分档、南京/杭州等对照用。</p>
+          </div>
+          <div>
+            <label for="propBill">年度物业费账单/实付（元）</label>
+            <input type="number" id="propBill" min="0" max="200000" step="1" value="3600" inputmode="decimal" />
+            <p class="hint">有「实付封顶」的城市会取 min(实付, 政策上限)。</p>
+          </div>
+        </div>
+        <div class="check-row" id="njInvoiceRow">
+          <input type="checkbox" id="hasInvoice" checked />
+          <label for="hasInvoice">能提供物业费发票（南京：有票上限更高）</label>
+        </div>
+      </div>
+      <p class="hint hidden" id="pendingHint"></p>
+    </section>
+
+    <button type="button" class="btn" id="btnCalc">开始测算</button>
+
+    <section class="card results" id="results" aria-live="polite">
+      <h2><span class="step">4</span> 测算结果</h2>
+      <div class="result-hero">
+        <div class="lbl" id="resultLabel">可提取上限（估算）</div>
+        <div class="val" id="resultVal">—</div>
+        <div class="subv" id="resultSub"></div>
+      </div>
+      <div class="notes-box">
+        <b>简要说明</b>
+        <ul id="resultNotes"></ul>
+      </div>
+      <p class="hint" style="margin-top:10px">最终以当地公积金中心审核为准；本结果不构成办理承诺。</p>
+    </section>
+
+    <section class="card">
+      <h2>需要「帮算」？留下联系方式</h2>
+      <p class="hint" style="margin-top:0;margin-bottom:12px">本机保存，方便你回访时自查；验证阶段也用于统计留联意愿（不上报服务器）。</p>
+      <form class="lead-form" id="leadForm">
+        <div class="row">
+          <label for="leadContact">微信或手机号</label>
+          <input type="text" id="leadContact" maxlength="40" placeholder="例如微信号或 11 位手机" required />
+        </div>
+        <div class="row">
+          <label for="leadNote">想帮算什么（可选）</label>
+          <input type="text" id="leadNote" maxlength="80" placeholder="如：郑州 120㎡ 装修 + 物业费" />
+        </div>
+        <button type="submit" class="btn secondary">提交留联（帮算）</button>
+        <p class="hint" id="leadMsg"></p>
+      </form>
+    </section>
+
+    <footer>
+      <nav class="site-nav" aria-label="站点导航">
+        <a href="/">首页</a>
+        <span aria-hidden="true">·</span>
+        <a href="about.html">关于</a>
+        <span aria-hidden="true">·</span>
+        <a href="privacy.html">隐私政策</a>
+        <span aria-hidden="true">·</span>
+        <a href="contact.html">联系我们</a>
+      </nav>
+      <p>数据整理日期：<b>2026-11-06</b>（Asia/Shanghai）。国家条例生效日：2026-09-20。郑州物业费文号：郑公积金〔2026〕24号。</p>
+      <p>来源摘要见页面城市说明与仓库 <code>data/cities.json</code> / README。相关工具：<a href="https://geshui.hpn6.com/">个税/养老金测算</a>（若已上线）。</p>
+      <p>© 测算页验证 MVP · 非任何住房公积金管理中心官方网站 · <strong>以当地公积金中心为准</strong></p>
+    </footer>
+  </div>
+
+  <script>
+  const CALC_KEY = "gjj_extract_calc_count_v1";
+  const LEAD_KEY = "gjj_extract_leads_v1";
+
+  /** Embedded snapshot; HTTP load of data/cities.json overrides when available. */
+  const EMBEDDED = {"meta":{"title":"公积金装修/物业费提取额度测算","fetchedAt":"2026-11-06","timezone":"Asia/Shanghai","disclaimer":"结果仅供参考，以当地公积金中心为准。本页非官方产品。","nationalOrdinance":{"name":"新修订《住房公积金管理条例》","effectiveDate":"2026-09-20","summary":"提取情形扩至9种，新增装修自住住房、支付自住住房物业费等。具体额度与条件由各设区市制定。","sources":[{"title":"新华网：今天起装修、交物业费都能用这笔钱了","url":"https://www.xinhuanet.com/politics/20260920/a3f75681aff247c39e8f4af7a14219a7/c.html","fetchedAt":"2026-11-06"},{"title":"央视网财经：条例今起正式实施","url":"https://finance.cctv.cn/2026/09/20/ARTIKIG4Q7bPc3BTJfsQ0tR8260920.shtml","fetchedAt":"2026-11-06"},{"title":"中国政府网政策解读","url":"https://www.gov.cn/zhengce/202608/content_7078605.htm","fetchedAt":"2026-11-06"}]}},"cities":[{"id":"zhengzhou","name":"郑州","province":"豫","default":true,"calculable":true,"notes":["每户家庭仅可选一套自住住房办理装修或物业类提取。","装修：住房须满6个月且未办过装修提取；有效证明时间在5年（含）以内或15年（含）以上。","物业费：每自然年度限一次，额度不累计、不结转。"],"renovation":{"status":"verified","method":"area_rate_cap","ratePerSqm":1500,"maxYuan":150000,"oncePerPerson":true,"familyOneHome":true,"docTitle":"关于支持自住住房装修提取住房公积金有关事项的通知","effectiveNote":"2026-11-04 发布之日起施行（媒体转述）","summary":"建筑面积×1500元/㎡，家庭合计最高不超过15万元。","sources":[{"title":"第一财经转述郑州公积金装修提取通知","url":"https://www.yicai.com/news/103425923.html","fetchedAt":"2026-11-06"},{"title":"中原网：郑州支持自住住房装修提取（条件与FAQ）","url":"https://zynews.cn/yaowen/2026/11/04/209243.html","fetchedAt":"2026-11-06"},{"title":"郑州公积金中心征求意见稿通告（背景）","url":"https://zzgjj.zhengzhou.gov.cn/suggesting/10270626.jhtml","fetchedAt":"2026-11-06"}]},"propertyFee":{"status":"verified","method":"area_tiers","docNo":"郑公积金〔2026〕24号","docTitle":"郑州住房公积金管理中心关于优化调整住房公积金提取政策的通知","issuedDate":"2026-09-28","publishedDate":"2026-09-29","frequency":"每自然年度每家庭一套、每人一次，双方合计≤档位额度；不累计不结转","tiers":[{"maxSqmInclusive":90,"annualYuan":2400,"label":"≤90㎡"},{"maxSqmInclusive":144,"annualYuan":3800,"label":"90–144㎡（含）"},{"maxSqmInclusive":null,"annualYuan":4300,"label":">144㎡"}],"related":{"heatingTiers":[{"maxSqmInclusive":90,"annualYuan":2100},{"maxSqmInclusive":144,"annualYuan":3200},{"maxSqmInclusive":null,"annualYuan":3700}],"parkingManagementYuan":1500},"summary":"按建筑面积分三档核定年度物业费提取上限：2400 / 3800 / 4300 元。","sources":[{"title":"郑州公积金中心原文（含文号郑公积金〔2026〕24号）","url":"https://zzgjj.zhengzhou.gov.cn/extract/10273615.jhtml","fetchedAt":"2026-11-06"},{"title":"郑州市政务公开全文","url":"https://public.zhengzhou.gov.cn/D0105Y/10273511.jhtml","fetchedAt":"2026-11-06"},{"title":"政策解读（政务公开）","url":"https://public.zhengzhou.gov.cn/D3602Y/10273543.jhtml","fetchedAt":"2026-11-06"}]}},{"id":"nanjing","name":"南京","province":"苏","default":false,"calculable":true,"notes":["装修：发票开具起1年内申请；同一家庭同一套住房限一次；每㎡≤1000元且家庭合计≤15万。","物业费：有发票按实付且年≤5000；无发票年≤1000；每自然年度一次。"],"renovation":{"status":"verified","method":"min_invoice_area_rate_cap","ratePerSqm":1000,"maxYuan":150000,"requiresInvoice":true,"summary":"min(发票金额, 面积×1000, 15万元)。","sources":[{"title":"南京市政府：装修与物业费落地细则","url":"https://www.nanjing.gov.cn/msxx/202609/t20260921_5914743.html","fetchedAt":"2026-11-06"}]},"propertyFee":{"status":"verified","method":"invoice_or_flat_cap","withInvoiceMaxYuan":5000,"withoutInvoiceMaxYuan":1000,"frequency":"同一家庭每自然年度限一次","summary":"有发票：min(实付, 5000)；无发票：上限1000。","sources":[{"title":"南京市政府：装修与物业费落地细则","url":"https://www.nanjing.gov.cn/msxx/202609/t20260921_5914743.html","fetchedAt":"2026-11-06"},{"title":"南京公积金中心：如何提取支付物业费","url":"https://www.nanjing.gov.cn/zzb/hdhy/hygq_72666/202610/t20261021_6022765.html","fetchedAt":"2026-11-06"}]}},{"id":"hangzhou","name":"杭州","province":"浙","default":false,"calculable":true,"notes":["装修（资质企业发票）：不超过发票价税合计，最高25万；产权满6个月。","装修（15年+适老化/翻新定额）：面积×1000元/㎡，可不提供发票合同。","再次装修提取须距上次满10年。","物业费：家庭名下1套，每年1次，合计≤实付且≤10000元。"],"renovation":{"status":"verified","method":"hangzhou_dual","invoiceMaxYuan":250000,"agingRatePerSqm":1000,"docNo":"杭房公委〔2026〕6号","summary":"发票路径最高25万；15年+适老化/翻新按面积×1000。","sources":[{"title":"杭州市人民政府公报：完善使用政策解读","url":"https://zfgb.hangzhou.gov.cn/15/110220263/t116220263104/530811.shtml","fetchedAt":"2026-11-06"},{"title":"每经网转述：最高不超过25万元","url":"https://www.nbd.com.cn/articles/2026-10-15/4605017.html","fetchedAt":"2026-11-06"}]},"propertyFee":{"status":"verified","method":"min_bill_cap","annualMaxYuan":10000,"frequency":"每年家庭1套1次；当年未提不补办","summary":"min(12个月实付物业相关支出, 10000元)。","sources":[{"title":"杭州网：物业费提取线上办理已开通","url":"https://hznews.hangzhou.com.cn/chengshi/content/2026-05/07/content_9217430.htm","fetchedAt":"2026-11-06"}]}},{"id":"jinan","name":"济南","province":"鲁","default":false,"calculable":true,"calculableScenes":["propertyFee"],"notes":["物业费：夫妻合计每年≤2500元。","装修提取本地额度细则本轮未核到官方全文 → 标待核对，本页暂不可算装修。","个贷率达90%时物业费等提取可能暂缓。"],"renovation":{"status":"pending","method":null,"summary":"待核对：尚未检索到济南装修提取明确额度细则。","sources":[]},"propertyFee":{"status":"verified","method":"flat_cap","annualMaxYuan":2500,"frequency":"每自然年度一次","summary":"缴存人及配偶合计年度提取额度不超过2500元。","sources":[{"title":"大众新闻/全景山东：济南公积金新政（2026-04-20起）","url":"https://sd.sdnews.com.cn/yw/202604/t20260421_4667323.htm","fetchedAt":"2026-11-06"}]}},{"id":"shanghai","name":"上海","province":"沪","default":false,"calculable":false,"notes":["国家条例已允许装修/物业费提取，但上海本地额度、材料、频次细则本轮未核到可计算口径。","对照展示，暂不开放测算。"],"renovation":{"status":"pending","method":null,"summary":"待核对：本地实施细则未核到。","sources":[]},"propertyFee":{"status":"pending","method":null,"summary":"待核对：本地实施细则未核到。","sources":[]}}]};
+
+  let DATA = EMBEDDED;
+  let scene = "renovation";
+
+  function money(n) {
+    if (n == null || Number.isNaN(n)) return "—";
+    return Number(n).toLocaleString("zh-CN", { maximumFractionDigits: 0 }) + " 元";
+  }
+
+  function getCity() {
+    return DATA.cities.find(c => c.id === document.getElementById("city").value) || DATA.cities[0];
+  }
+
+  function sceneRule(city) {
+    return scene === "renovation" ? city.renovation : city.propertyFee;
+  }
+
+  function canCalc(city) {
+    const rule = sceneRule(city);
+    if (!rule || rule.status !== "verified" || !rule.method) return false;
+    if (city.calculableScenes && !city.calculableScenes.includes(scene)) return false;
+    if (city.calculable === false) return false;
+    return true;
+  }
+
+  function fillCities() {
+    const sel = document.getElementById("city");
+    sel.innerHTML = "";
+    DATA.cities.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c.id;
+      const reno = c.renovation?.status === "verified" ? "装✓" : "装待核";
+      const prop = c.propertyFee?.status === "verified" ? "物✓" : "物待核";
+      opt.textContent = `${c.name}（${c.province}）· ${reno}/${prop}`;
+      if (c.default) opt.selected = true;
+      sel.appendChild(opt);
+    });
+  }
+
+  function fillCompare() {
+    const tb = document.querySelector("#compareTable tbody");
+    tb.innerHTML = "";
+    DATA.cities.forEach(c => {
+      const tr = document.createElement("tr");
+      const r = c.renovation || {};
+      const p = c.propertyFee || {};
+      tr.innerHTML = `<td><b>${c.name}</b></td>
+        <td>${r.status === "verified" ? (r.summary || "已核") : '<span class="pending">待核对</span>'}</td>
+        <td>${p.status === "verified" ? (p.summary || "已核") : '<span class="pending">待核对</span>'}</td>`;
+      tb.appendChild(tr);
+    });
+  }
+
+  function updateCityMeta() {
+    const city = getCity();
+    const rule = sceneRule(city);
+    const ok = canCalc(city);
+    const src = (rule?.sources || []).slice(0, 2).map(s => `<a href="${s.url}" target="_blank" rel="noopener">${s.title}</a>`).join("； ") || "—";
+    document.getElementById("cityMeta").innerHTML =
+      `<div><b>${city.name}</b> · ${scene === "renovation" ? "装修" : "物业费"}：` +
+      (rule?.status === "verified" ? "已核对" : '<span class="pending">待核对</span>') +
+      `</div><div style="margin-top:6px">${rule?.summary || ""}</div>` +
+      (rule?.docNo ? `<div style="margin-top:6px">文号：<b>${rule.docNo}</b></div>` : "") +
+      `<div style="margin-top:6px">要点：${(city.notes || []).slice(0, 2).join(" / ")}</div>` +
+      `<div style="margin-top:6px">来源：${src}</div>`;
+
+    document.getElementById("hzModeWrap").classList.toggle("hidden", !(scene === "renovation" && city.id === "hangzhou" && ok));
+    document.getElementById("invoiceWrap").classList.toggle("hidden", scene !== "renovation");
+    document.getElementById("njInvoiceRow").classList.toggle("hidden", !(scene === "propertyFee" && city.id === "nanjing"));
+    document.getElementById("fieldsReno").classList.toggle("hidden", scene !== "renovation");
+    document.getElementById("fieldsProp").classList.toggle("hidden", scene !== "propertyFee");
+
+    const pending = document.getElementById("pendingHint");
+    const btn = document.getElementById("btnCalc");
+    if (!ok) {
+      pending.classList.remove("hidden");
+      pending.innerHTML = `<span class="pending">当前城市本场景暂不可算</span>：细则待核对或未开放。可切换回<strong>郑州</strong>，或改选另一场景。`;
+      btn.disabled = true;
+    } else {
+      pending.classList.add("hidden");
+      btn.disabled = false;
+    }
+  }
+
+  function calcRenovation(city) {
+    const area = Number(document.getElementById("areaSqm").value);
+    const invoice = Number(document.getElementById("invoiceYuan").value);
+    const rule = city.renovation;
+    const notes = [];
+    let cap = 0;
+    let detail = "";
+
+    if (!(area > 0)) throw new Error("请填写有效建筑面积");
+
+    if (rule.method === "area_rate_cap") {
+      const raw = area * rule.ratePerSqm;
+      cap = Math.min(raw, rule.maxYuan);
+      detail = `${area}㎡ × ${rule.ratePerSqm} 元/㎡ = ${money(raw)}，封顶 ${money(rule.maxYuan)} → ${money(cap)}`;
+      notes.push("郑州口径：按登记建筑面积×1500，家庭合计最高15万。");
+      notes.push("条件摘要：住房满6个月；证明时间≤5年或≥15年；每户一套、夫妻各限一次。");
+    } else if (rule.method === "min_invoice_area_rate_cap") {
+      if (!(invoice > 0)) throw new Error("南京装修提取需填写发票金额");
+      const byArea = area * rule.ratePerSqm;
+      cap = Math.min(invoice, byArea, rule.maxYuan);
+      detail = `min(发票 ${money(invoice)}, 面积×${rule.ratePerSqm}=${money(byArea)}, 封顶 ${money(rule.maxYuan)}) → ${money(cap)}`;
+      notes.push("南京：按发票核定，且每㎡不超过1000元，家庭总额≤15万；发票起1年内申请。");
+    } else if (rule.method === "hangzhou_dual") {
+      const mode = document.getElementById("hzMode").value;
+      if (mode === "aging") {
+        cap = area * rule.agingRatePerSqm;
+        detail = `${area}㎡ × ${rule.agingRatePerSqm} 元/㎡（15年+适老化/翻新）→ ${money(cap)}`;
+        notes.push("杭州定额路径：产权满15年适老化/翻新，按面积×1000，可不提供发票合同。");
+      } else {
+        if (!(invoice > 0)) throw new Error("杭州发票路径请填写装修增值税发票金额");
+        cap = Math.min(invoice, rule.invoiceMaxYuan);
+        detail = `min(发票 ${money(invoice)}, 最高 ${money(rule.invoiceMaxYuan)}) → ${money(cap)}`;
+        notes.push("杭州发票路径：须资质企业装修合同+增值税发票；总额不超过发票价税合计且≤25万。");
+        notes.push("再次装修提取须距上次满10年。");
+      }
+    } else {
+      throw new Error("该城市装修规则待核对");
+    }
+
+    notes.push("实际可提还受账户余额、婚姻双方合计规则等限制。");
+    return { cap, detail, notes };
+  }
+
+  function tierAmount(tiers, area) {
+    for (const t of tiers) {
+      if (t.maxSqmInclusive == null || area <= t.maxSqmInclusive) return t;
+    }
+    return tiers[tiers.length - 1];
+  }
+
+  function calcProperty(city) {
+    const area = Number(document.getElementById("propArea").value);
+    const bill = Number(document.getElementById("propBill").value);
+    const rule = city.propertyFee;
+    const notes = [];
+    let cap = 0;
+    let detail = "";
+
+    if (rule.method === "area_tiers") {
+      if (!(area > 0)) throw new Error("请填写有效建筑面积");
+      const t = tierAmount(rule.tiers, area);
+      cap = t.annualYuan;
+      if (bill > 0) {
+        const capped = Math.min(cap, bill);
+        detail = `面积 ${area}㎡ → 档位「${t.label}」政策上限 ${money(cap)}` +
+          (bill > 0 ? `；若对照账单实付 ${money(bill)}，取较低值 ${money(capped)}` : "");
+        if (bill > 0) cap = capped;
+        notes.push("郑州按面积分档核定年度上限；是否还必须≤实付以中心审核为准，本页对有账单时取较低值便于对照。");
+      } else {
+        detail = `面积 ${area}㎡ → 档位「${t.label}」年度上限 ${money(cap)}`;
+        notes.push("郑州：郑公积金〔2026〕24号，按面积分档 2400/3800/4300。");
+      }
+      notes.push(rule.frequency || "每自然年度限一次，不累计不结转。");
+      if (rule.related) {
+        const ht = tierAmount(rule.related.heatingTiers, area);
+        notes.push(`同文件还可对照：取暖费档位约 ${money(ht.annualYuan)}；车位管理费统一定额 ${money(rule.related.parkingManagementYuan)}（本测算主场景为物业费）。`);
+      }
+    } else if (rule.method === "invoice_or_flat_cap") {
+      const has = document.getElementById("hasInvoice").checked;
+      if (has) {
+        if (!(bill > 0)) throw new Error("有发票时请填写实付物业费");
+        cap = Math.min(bill, rule.withInvoiceMaxYuan);
+        detail = `有发票：min(实付 ${money(bill)}, ${money(rule.withInvoiceMaxYuan)}) → ${money(cap)}`;
+      } else {
+        cap = rule.withoutInvoiceMaxYuan;
+        detail = `无发票：家庭年度上限 ${money(cap)}`;
+      }
+      notes.push("南京：同一家庭每自然年度限一次。");
+    } else if (rule.method === "min_bill_cap") {
+      if (!(bill > 0)) throw new Error("请填写年度物业费实付/账单");
+      cap = Math.min(bill, rule.annualMaxYuan);
+      detail = `min(实付 ${money(bill)}, 年封顶 ${money(rule.annualMaxYuan)}) → ${money(cap)}`;
+      notes.push("杭州：每年家庭1套1次；含物业服务费等口径以当地办理指引为准。");
+    } else if (rule.method === "flat_cap") {
+      cap = rule.annualMaxYuan;
+      if (bill > 0) {
+        cap = Math.min(cap, bill);
+        detail = `政策年封顶 ${money(rule.annualMaxYuan)}；对照实付 ${money(bill)} → ${money(cap)}`;
+      } else {
+        detail = `夫妻合计年度上限 ${money(cap)}`;
+      }
+      notes.push("济南：每自然年度一次；个贷率过高时业务可能暂缓。");
+    } else {
+      throw new Error("该城市物业费规则待核对");
+    }
+
+    notes.push("结果仅供参考，以当地公积金中心为准。");
+    return { cap, detail, notes };
+  }
+
+  function bumpCalc() {
+    const n = Number(localStorage.getItem(CALC_KEY) || "0") + 1;
+    localStorage.setItem(CALC_KEY, String(n));
+    document.getElementById("calcCount").textContent = String(n);
+  }
+
+  function refreshLeadCount() {
+    let leads = [];
+    try { leads = JSON.parse(localStorage.getItem(LEAD_KEY) || "[]"); } catch (e) { leads = []; }
+    document.getElementById("leadCount").textContent = String(leads.length);
+  }
+
+  function setScene(next) {
+    scene = next;
+    document.getElementById("tabReno").classList.toggle("active", scene === "renovation");
+    document.getElementById("tabProp").classList.toggle("active", scene === "propertyFee");
+    document.getElementById("tabReno").setAttribute("aria-selected", scene === "renovation" ? "true" : "false");
+    document.getElementById("tabProp").setAttribute("aria-selected", scene === "propertyFee" ? "true" : "false");
+    updateCityMeta();
+    document.getElementById("results").classList.remove("show");
+  }
+
+  function runCalc() {
+    const city = getCity();
+    try {
+      if (!canCalc(city)) throw new Error("当前城市本场景暂不可算");
+      const out = scene === "renovation" ? calcRenovation(city) : calcProperty(city);
+      document.getElementById("resultLabel").textContent =
+        `${city.name} · ${scene === "renovation" ? "装修" : "物业费"}可提取上限（估算）`;
+      document.getElementById("resultVal").textContent = money(out.cap);
+      document.getElementById("resultSub").textContent = out.detail;
+      const ul = document.getElementById("resultNotes");
+      ul.innerHTML = "";
+      out.notes.forEach(t => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        ul.appendChild(li);
+      });
+      document.getElementById("results").classList.add("show");
+      bumpCalc();
+    } catch (err) {
+      alert(err.message || String(err));
+    }
+  }
+
+  function initUI() {
+    fillCities();
+    fillCompare();
+    document.getElementById("calcCount").textContent = localStorage.getItem(CALC_KEY) || "0";
+    refreshLeadCount();
+    updateCityMeta();
+
+    document.getElementById("city").addEventListener("change", updateCityMeta);
+    document.getElementById("tabReno").addEventListener("click", () => setScene("renovation"));
+    document.getElementById("tabProp").addEventListener("click", () => setScene("propertyFee"));
+    document.getElementById("btnCalc").addEventListener("click", runCalc);
+    document.getElementById("hzMode").addEventListener("change", () => {});
+
+    document.getElementById("leadForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const contact = document.getElementById("leadContact").value.trim();
+      const note = document.getElementById("leadNote").value.trim();
+      if (!contact) return;
+      let leads = [];
+      try { leads = JSON.parse(localStorage.getItem(LEAD_KEY) || "[]"); } catch (err) { leads = []; }
+      leads.push({ contact, note, scene, city: getCity().id, at: new Date().toISOString() });
+      localStorage.setItem(LEAD_KEY, JSON.stringify(leads));
+      refreshLeadCount();
+      document.getElementById("leadMsg").textContent = "已保存在本机。验证成功线：留联≥5。";
+      document.getElementById("leadForm").reset();
+    });
+  }
+
+  async function boot() {
+    try {
+      const res = await fetch("data/cities.json", { cache: "no-store" });
+      if (res.ok) {
+        DATA = await res.json();
+      }
+    } catch (e) { /* use embedded */ }
+    initUI();
+  }
+
+  boot();
+  </script>
+</body>
+</html>
