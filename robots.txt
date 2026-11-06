@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gjj.hpn6.com/sitemap.xml
