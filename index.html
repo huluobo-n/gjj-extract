@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>公积金装修/物业费提取额度测算 | 郑州默认·多城对照</title>
-  <meta name="description" content="测算郑州等地公积金装修提取与物业费提取上限。默认郑州：装修约1500元/㎡最高15万；物业费按郑公积金〔2026〕24号分档。结果仅供参考，以当地公积金中心为准。" />
-  <meta name="keywords" content="公积金提取,装修提取,物业费提取,郑州公积金,额度测算" />
+  <title>公积金提取额度测算 | 广州默认·装修/物业费/无备案租房</title>
+  <meta name="description" content="测算广州等地公积金装修、物业费与无备案租房提取上限。默认广州（穗公积金中心规字〔2026〕4号，2026-11-10施行）：装修按发票或满8年定额；物业费按面积×3元/㎡×12；无备案租房3000/4000元/人/月。结果为非官方参考测算，以当地公积金中心为准。" />
+  <meta name="keywords" content="公积金提取,装修提取,物业费提取,租房提取,无备案租房,广州公积金,穗公积金中心规字,郑州公积金,额度测算" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://gjj.hpn6.com/" />
-  <meta property="og:title" content="公积金装修/物业费提取额度测算" />
-  <meta property="og:description" content="郑州默认·多城对照。醒目提示：以当地公积金中心为准。" />
+  <meta property="og:title" content="公积金提取额度测算（装修/物业费/广州无备案租房）" />
+  <meta property="og:description" content="广州默认·保留郑州等可选。结果为非官方参考测算，以当地公积金中心为准。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gjj.hpn6.com/" />
   <style>
@@ -77,7 +77,8 @@
       font-size: 0.86rem; color: var(--muted);
     }
     .city-meta b { color: var(--ink); }
-    .scene-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .scene-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    @media (max-width: 520px) { .scene-tabs { grid-template-columns: 1fr; } }
     .scene-tab {
       border: 1.5px solid var(--line); background: #fff; border-radius: 12px;
       padding: 12px; cursor: pointer; font-family: inherit; font-size: 0.92rem; font-weight: 600;
@@ -140,10 +141,10 @@
     <header>
       <div class="badge-row">
         <span class="badge">独立测算 · 非公积金中心官方</span>
-        <span class="badge">默认郑州 · 多城对照</span>
+        <span class="badge">默认广州 · 多城对照</span>
       </div>
-      <h1>公积金装修 / 物业费提取额度测算</h1>
-      <p class="sub">输入面积或账单额，估算可提取上限。国家条例自 2026-09-20 起允许装修与物业费提取；额度一城一策，本页以当地公开文件整理。</p>
+      <h1>公积金提取额度测算</h1>
+      <p class="sub">测算装修、物业费提取上限；广州另可测算无备案租房。国家条例自 2026-09-20 起允许装修与物业费提取；额度一城一策。广州口径依据穗公积金中心规字〔2026〕4号（2026-11-10 施行）。</p>
     </header>
 
     <div class="alert" role="alert">
@@ -152,6 +153,7 @@
         <li><b>以当地公积金中心为准</b>：本页结果仅供参考，不冒充官方审批结论，政策可能调整。</li>
         <li><b>账户余额限制</b>：实际可提金额还受个人/配偶账户余额、是否有逾期贷款等约束，可能低于上限。</li>
         <li><b>频次与房屋条件</b>：多数城市限一套房、装修常限一次、物业费按自然年；请对照本地材料清单办理。</li>
+        <li><b>广州依据</b>：穗公积金中心规字〔2026〕4号（2026-11-10 施行，有效期至 2031-11-10）。原文见 <a href="https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html" target="_blank" rel="noopener">广州市人民政府网站</a>。本页结果为<strong>非官方参考测算</strong>，不对接办理。</li>
       </ul>
     </div>
 
@@ -172,6 +174,10 @@
           物业费提取
           <small>按面积分档或年封顶</small>
         </button>
+        <button type="button" class="scene-tab" id="tabRent" data-scene="rentUnregistered" role="tab" aria-selected="false">
+          无备案租房
+          <small>广州：3000/4000 元/人/月</small>
+        </button>
       </div>
     </section>
 
@@ -185,7 +191,7 @@
         <div style="overflow-x:auto">
           <table class="compare-table" id="compareTable">
             <thead>
-              <tr><th>城市</th><th>装修</th><th>物业费</th></tr>
+              <tr><th>城市</th><th>装修</th><th>物业费</th><th>无备案租房</th></tr>
             </thead>
             <tbody></tbody>
           </table>
@@ -205,7 +211,7 @@
           <div id="invoiceWrap">
             <label for="invoiceYuan">装修发票金额（元，可选）</label>
             <input type="number" id="invoiceYuan" min="0" max="5000000" step="1" value="" inputmode="decimal" placeholder="有发票城市请填写" />
-            <p class="hint" id="invoiceHint">郑州定额测算可不填；南京/杭州发票路径需要。</p>
+            <p class="hint" id="invoiceHint">郑州定额测算可不填；南京/杭州发票路径需要；广州发票路径须填资质企业装修发票。</p>
           </div>
         </div>
         <div id="hzModeWrap" class="hidden" style="margin-top:12px">
@@ -215,24 +221,47 @@
             <option value="aging">产权满15年适老化/翻新（面积×1000）</option>
           </select>
         </div>
+        <div id="gzModeWrap" class="hidden" style="margin-top:12px">
+          <label for="gzMode">广州装修路径</label>
+          <select id="gzMode">
+            <option value="invoice">有建筑装修装饰工程专业承包资质企业开具的房屋装修发票（不超过发票且不超过面积×1800）</option>
+            <option value="owned8">未能提供该发票，但持有住房满8年（不超过面积×800）</option>
+          </select>
+          <p class="hint">两种方式择一；一次性提取，同一缴存人再次申请须间隔满8年。适用于 2026-09-20（含）以后装修本市自住住房。</p>
+        </div>
       </div>
       <div id="fieldsProp" class="hidden">
         <div class="grid-2">
-          <div>
+          <div id="propAreaWrap">
             <label for="propArea">房屋建筑面积（㎡）</label>
             <input type="number" id="propArea" min="1" max="1000" step="0.1" value="100" inputmode="decimal" />
-            <p class="hint">郑州分档、南京/杭州等对照用。</p>
+            <p class="hint" id="propAreaHint">郑州分档、广州按面积×3元/㎡×12；南京/杭州等对照用。</p>
           </div>
-          <div>
+          <div id="propBillWrap">
             <label for="propBill">年度物业费账单/实付（元）</label>
             <input type="number" id="propBill" min="0" max="200000" step="1" value="3600" inputmode="decimal" />
-            <p class="hint">有「实付封顶」的城市会取 min(实付, 政策上限)。</p>
+            <p class="hint">有「实付封顶」的城市会取 min(实付, 政策上限)。广州按定额核算，不按实付封顶。</p>
           </div>
         </div>
         <div class="check-row" id="njInvoiceRow">
           <input type="checkbox" id="hasInvoice" checked />
           <label for="hasInvoice">能提供物业费发票（南京：有票上限更高）</label>
         </div>
+      </div>
+      <div id="fieldsRent" class="hidden">
+        <div class="check-row">
+          <input type="checkbox" id="rentMultiChild" />
+          <label for="rentMultiChild">生育二孩及以上（至少有一个未成年子女）</label>
+        </div>
+        <div style="margin-top:8px">
+          <label for="rentPersons">测算缴存人数</label>
+          <select id="rentPersons">
+            <option value="1" selected>1 人（本人）</option>
+            <option value="2">2 人（本人及配偶均为缴存人，按「元/人」合计）</option>
+          </select>
+          <p class="hint">公文口径为「元/人」。缴存人可申请提取本人账户余额；配偶如同为缴存人，可分别申请。本页可按 1 人或 2 人合计测算。</p>
+        </div>
+        <p class="hint">条件：未办理租赁合同登记备案，且在本市行政区域内无自住住房。已备案租房（不超过月租金且不超过8000元，多孩家庭不超过10000元）及公租房（不超过每月租金）见穗公积金中心规字〔2026〕4号第二条，本页不做完整测算。</p>
       </div>
       <p class="hint hidden" id="pendingHint"></p>
     </section>
@@ -247,10 +276,11 @@
         <div class="subv" id="resultSub"></div>
       </div>
       <div class="notes-box">
-        <b>简要说明</b>
+        <b>简要说明与材料要点</b>
         <ul id="resultNotes"></ul>
+        <p class="hint" id="resultOfficial" style="margin-top:8px"></p>
       </div>
-      <p class="hint" style="margin-top:10px">最终以当地公积金中心审核为准；本结果不构成办理承诺。</p>
+      <p class="hint" style="margin-top:10px">本结果为<strong>非官方参考测算</strong>，不构成办理承诺，最终以当地公积金中心审核为准。</p>
     </section>
 
     <section class="card">
@@ -263,7 +293,7 @@
         </div>
         <div class="row">
           <label for="leadNote">想帮算什么（可选）</label>
-          <input type="text" id="leadNote" maxlength="80" placeholder="如：郑州 120㎡ 装修 + 物业费" />
+          <input type="text" id="leadNote" maxlength="80" placeholder="如：广州 90㎡ 装修 + 物业费" />
         </div>
         <button type="submit" class="btn secondary">提交留联（帮算）</button>
         <p class="hint" id="leadMsg"></p>
@@ -280,9 +310,9 @@
         <span aria-hidden="true">·</span>
         <a href="contact.html">联系我们</a>
       </nav>
-      <p>数据整理日期：<b>2026-11-06</b>（Asia/Shanghai）。国家条例生效日：2026-09-20。郑州物业费文号：郑公积金〔2026〕24号。</p>
-      <p>来源摘要见页面城市说明与仓库 <code>data/cities.json</code> / README。相关工具：<a href="https://geshui.hpn6.com/">个税/养老金测算</a>（若已上线）。</p>
-      <p>© 测算页验证 MVP · 非任何住房公积金管理中心官方网站 · <strong>以当地公积金中心为准</strong></p>
+      <p>数据整理日期：<b>2026-11-11</b>（Asia/Shanghai）。国家条例生效日：2026-09-20。广州文号：<a href="https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html" target="_blank" rel="noopener">穗公积金中心规字〔2026〕4号</a>（2026-11-10 施行）。郑州物业费文号：郑公积金〔2026〕24号。</p>
+      <p>来源摘要见页面城市说明与 <code>data/cities.json</code>。相关工具：<a href="https://geshui.hpn6.com/">个税/养老金测算</a>（若已上线）。</p>
+      <p>© 测算页验证 MVP · 非任何住房公积金管理中心官方网站 · 结果为非官方参考测算 · <strong>以当地公积金中心为准</strong></p>
     </footer>
   </div>
 
@@ -291,7 +321,7 @@
   const LEAD_KEY = "gjj_extract_leads_v1";
 
   /** Embedded snapshot; HTTP load of data/cities.json overrides when available. */
-  const EMBEDDED = {"meta":{"title":"公积金装修/物业费提取额度测算","fetchedAt":"2026-11-06","timezone":"Asia/Shanghai","disclaimer":"结果仅供参考，以当地公积金中心为准。本页非官方产品。","nationalOrdinance":{"name":"新修订《住房公积金管理条例》","effectiveDate":"2026-09-20","summary":"提取情形扩至9种，新增装修自住住房、支付自住住房物业费等。具体额度与条件由各设区市制定。","sources":[{"title":"新华网：今天起装修、交物业费都能用这笔钱了","url":"https://www.xinhuanet.com/politics/20260920/a3f75681aff247c39e8f4af7a14219a7/c.html","fetchedAt":"2026-11-06"},{"title":"央视网财经：条例今起正式实施","url":"https://finance.cctv.cn/2026/09/20/ARTIKIG4Q7bPc3BTJfsQ0tR8260920.shtml","fetchedAt":"2026-11-06"},{"title":"中国政府网政策解读","url":"https://www.gov.cn/zhengce/202608/content_7078605.htm","fetchedAt":"2026-11-06"}]}},"cities":[{"id":"zhengzhou","name":"郑州","province":"豫","default":true,"calculable":true,"notes":["每户家庭仅可选一套自住住房办理装修或物业类提取。","装修：住房须满6个月且未办过装修提取；有效证明时间在5年（含）以内或15年（含）以上。","物业费：每自然年度限一次，额度不累计、不结转。"],"renovation":{"status":"verified","method":"area_rate_cap","ratePerSqm":1500,"maxYuan":150000,"oncePerPerson":true,"familyOneHome":true,"docTitle":"关于支持自住住房装修提取住房公积金有关事项的通知","effectiveNote":"2026-11-04 发布之日起施行（媒体转述）","summary":"建筑面积×1500元/㎡，家庭合计最高不超过15万元。","sources":[{"title":"第一财经转述郑州公积金装修提取通知","url":"https://www.yicai.com/news/103425923.html","fetchedAt":"2026-11-06"},{"title":"中原网：郑州支持自住住房装修提取（条件与FAQ）","url":"https://zynews.cn/yaowen/2026/11/04/209243.html","fetchedAt":"2026-11-06"},{"title":"郑州公积金中心征求意见稿通告（背景）","url":"https://zzgjj.zhengzhou.gov.cn/suggesting/10270626.jhtml","fetchedAt":"2026-11-06"}]},"propertyFee":{"status":"verified","method":"area_tiers","docNo":"郑公积金〔2026〕24号","docTitle":"郑州住房公积金管理中心关于优化调整住房公积金提取政策的通知","issuedDate":"2026-09-28","publishedDate":"2026-09-29","frequency":"每自然年度每家庭一套、每人一次，双方合计≤档位额度；不累计不结转","tiers":[{"maxSqmInclusive":90,"annualYuan":2400,"label":"≤90㎡"},{"maxSqmInclusive":144,"annualYuan":3800,"label":"90–144㎡（含）"},{"maxSqmInclusive":null,"annualYuan":4300,"label":">144㎡"}],"related":{"heatingTiers":[{"maxSqmInclusive":90,"annualYuan":2100},{"maxSqmInclusive":144,"annualYuan":3200},{"maxSqmInclusive":null,"annualYuan":3700}],"parkingManagementYuan":1500},"summary":"按建筑面积分三档核定年度物业费提取上限：2400 / 3800 / 4300 元。","sources":[{"title":"郑州公积金中心原文（含文号郑公积金〔2026〕24号）","url":"https://zzgjj.zhengzhou.gov.cn/extract/10273615.jhtml","fetchedAt":"2026-11-06"},{"title":"郑州市政务公开全文","url":"https://public.zhengzhou.gov.cn/D0105Y/10273511.jhtml","fetchedAt":"2026-11-06"},{"title":"政策解读（政务公开）","url":"https://public.zhengzhou.gov.cn/D3602Y/10273543.jhtml","fetchedAt":"2026-11-06"}]}},{"id":"nanjing","name":"南京","province":"苏","default":false,"calculable":true,"notes":["装修：发票开具起1年内申请；同一家庭同一套住房限一次；每㎡≤1000元且家庭合计≤15万。","物业费：有发票按实付且年≤5000；无发票年≤1000；每自然年度一次。"],"renovation":{"status":"verified","method":"min_invoice_area_rate_cap","ratePerSqm":1000,"maxYuan":150000,"requiresInvoice":true,"summary":"min(发票金额, 面积×1000, 15万元)。","sources":[{"title":"南京市政府：装修与物业费落地细则","url":"https://www.nanjing.gov.cn/msxx/202609/t20260921_5914743.html","fetchedAt":"2026-11-06"}]},"propertyFee":{"status":"verified","method":"invoice_or_flat_cap","withInvoiceMaxYuan":5000,"withoutInvoiceMaxYuan":1000,"frequency":"同一家庭每自然年度限一次","summary":"有发票：min(实付, 5000)；无发票：上限1000。","sources":[{"title":"南京市政府：装修与物业费落地细则","url":"https://www.nanjing.gov.cn/msxx/202609/t20260921_5914743.html","fetchedAt":"2026-11-06"},{"title":"南京公积金中心：如何提取支付物业费","url":"https://www.nanjing.gov.cn/zzb/hdhy/hygq_72666/202610/t20261021_6022765.html","fetchedAt":"2026-11-06"}]}},{"id":"hangzhou","name":"杭州","province":"浙","default":false,"calculable":true,"notes":["装修（资质企业发票）：不超过发票价税合计，最高25万；产权满6个月。","装修（15年+适老化/翻新定额）：面积×1000元/㎡，可不提供发票合同。","再次装修提取须距上次满10年。","物业费：家庭名下1套，每年1次，合计≤实付且≤10000元。"],"renovation":{"status":"verified","method":"hangzhou_dual","invoiceMaxYuan":250000,"agingRatePerSqm":1000,"docNo":"杭房公委〔2026〕6号","summary":"发票路径最高25万；15年+适老化/翻新按面积×1000。","sources":[{"title":"杭州市人民政府公报：完善使用政策解读","url":"https://zfgb.hangzhou.gov.cn/15/110220263/t116220263104/530811.shtml","fetchedAt":"2026-11-06"},{"title":"每经网转述：最高不超过25万元","url":"https://www.nbd.com.cn/articles/2026-10-15/4605017.html","fetchedAt":"2026-11-06"}]},"propertyFee":{"status":"verified","method":"min_bill_cap","annualMaxYuan":10000,"frequency":"每年家庭1套1次；当年未提不补办","summary":"min(12个月实付物业相关支出, 10000元)。","sources":[{"title":"杭州网：物业费提取线上办理已开通","url":"https://hznews.hangzhou.com.cn/chengshi/content/2026-05/07/content_9217430.htm","fetchedAt":"2026-11-06"}]}},{"id":"jinan","name":"济南","province":"鲁","default":false,"calculable":true,"calculableScenes":["propertyFee"],"notes":["物业费：夫妻合计每年≤2500元。","装修提取本地额度细则本轮未核到官方全文 → 标待核对，本页暂不可算装修。","个贷率达90%时物业费等提取可能暂缓。"],"renovation":{"status":"pending","method":null,"summary":"待核对：尚未检索到济南装修提取明确额度细则。","sources":[]},"propertyFee":{"status":"verified","method":"flat_cap","annualMaxYuan":2500,"frequency":"每自然年度一次","summary":"缴存人及配偶合计年度提取额度不超过2500元。","sources":[{"title":"大众新闻/全景山东：济南公积金新政（2026-04-20起）","url":"https://sd.sdnews.com.cn/yw/202604/t20260421_4667323.htm","fetchedAt":"2026-11-06"}]}},{"id":"shanghai","name":"上海","province":"沪","default":false,"calculable":false,"notes":["国家条例已允许装修/物业费提取，但上海本地额度、材料、频次细则本轮未核到可计算口径。","对照展示，暂不开放测算。"],"renovation":{"status":"pending","method":null,"summary":"待核对：本地实施细则未核到。","sources":[]},"propertyFee":{"status":"pending","method":null,"summary":"待核对：本地实施细则未核到。","sources":[]}}]};
+  const EMBEDDED = {"meta":{"title":"公积金提取额度测算（装修/物业费/广州无备案租房）","fetchedAt":"2026-11-11","timezone":"Asia/Shanghai","disclaimer":"结果为非官方参考测算，仅供参考，以当地公积金中心为准。本页非官方产品。","nationalOrdinance":{"name":"新修订《住房公积金管理条例》","effectiveDate":"2026-09-20","summary":"提取情形扩至9种，新增装修自住住房、支付自住住房物业费等。具体额度与条件由各设区市制定。","sources":[{"title":"新华网：今天起装修、交物业费都能用这笔钱了","url":"https://www.xinhuanet.com/politics/20260920/a3f75681aff247c39e8f4af7a14219a7/c.html","fetchedAt":"2026-11-06"},{"title":"央视网财经：条例今起正式实施","url":"https://finance.cctv.cn/2026/09/20/ARTIKIG4Q7bPc3BTJfsQ0tR8260920.shtml","fetchedAt":"2026-11-06"},{"title":"中国政府网政策解读","url":"https://www.gov.cn/zhengce/202608/content_7078605.htm","fetchedAt":"2026-11-06"}]}},"cities":[{"id":"guangzhou","name":"广州","province":"粤","default":true,"calculable":true,"calculableScenes":["renovation","propertyFee","rentUnregistered"],"notes":["装修：2026年9月20日（含）以后装修本市行政区域内自住住房；一次性提取；同一缴存人再次申请需间隔满8年。","物业费：每套按房屋建筑面积×3元/㎡×12核算；每个自然年度可申请一次，当年未提取额度不结转至次年；公文未要求发票。已经办理其他提取业务的缴存人，符合条件的可以同时申请办理物业费提取。","无备案租房：未办理租赁合同登记备案且在本市行政区域内无自住住房；月提取额不超过3000元/人，生育二孩及以上（至少有一个未成年子女）的家庭不超过4000元/人；当年未提取额度不结转至次年。","已备案租房（不超过月租金且不超过8000元，多孩家庭不超过10000元）及公租房（不超过每月租金）见公文第二条，本页不做完整测算。本页只做测算、材料要点并指向官网，不对接办理。"],"renovation":{"status":"verified","method":"guangzhou_dual","invoiceRatePerSqm":1800,"noInvoiceOwnedYears":8,"noInvoiceRatePerSqm":800,"once":true,"reapplyIntervalYears":8,"renovationFrom":"2026-09-20","docNo":"穗公积金中心规字〔2026〕4号","docTitle":"广州住房公积金管理中心关于优化住房公积金提取政策的通知","effectiveDate":"2026-11-10","expiryDate":"2031-11-10","summary":"有资质企业装修发票：不超过发票金额且不超过面积×1800元/㎡；无该发票但持有住房满8年：不超过面积×800元/㎡。一次性，再次申请间隔满8年。","sources":[{"title":"广州市人民政府：穗公积金中心规字〔2026〕4号（全文）","url":"https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html","fetchedAt":"2026-11-11"}]},"propertyFee":{"status":"verified","method":"area_rate_times_months","ratePerSqmPerMonth":3,"months":12,"invoiceRequired":false,"frequency":"每个自然年度可申请一次，当年未提取额度不结转至次年","canCombineWithOtherExtracts":true,"docNo":"穗公积金中心规字〔2026〕4号","docTitle":"广州住房公积金管理中心关于优化住房公积金提取政策的通知","effectiveDate":"2026-11-10","expiryDate":"2031-11-10","summary":"每套住房按房屋建筑面积×3元/㎡×12核算；公文未要求发票。","sources":[{"title":"广州市人民政府：穗公积金中心规字〔2026〕4号（全文）","url":"https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html","fetchedAt":"2026-11-11"}]},"rentUnregistered":{"status":"verified","method":"per_person_monthly_cap","monthlyYuan":3000,"multiChildMonthlyYuan":4000,"multiChildNote":"生育二孩及以上（至少有一个未成年子女）的家庭","conditions":"未办理租赁合同登记备案且在本市行政区域内无自住住房","frequency":"购、租房提取频次为每月一次；当年未提取额度不结转至次年","docNo":"穗公积金中心规字〔2026〕4号","docTitle":"广州住房公积金管理中心关于优化住房公积金提取政策的通知","effectiveDate":"2026-11-10","expiryDate":"2031-11-10","summary":"无备案且本市无自住住房：月提取额不超过3000元/人；符合多孩条件的家庭不超过4000元/人。","relatedNote":"已备案租房、公租房见公文第二条，本页不做完整测算。","sources":[{"title":"广州市人民政府：穗公积金中心规字〔2026〕4号（全文）","url":"https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html","fetchedAt":"2026-11-11"}]}},{"id":"zhengzhou","name":"郑州","province":"豫","default":false,"calculable":true,"notes":["每户家庭仅可选一套自住住房办理装修或物业类提取。","装修：住房须满6个月且未办过装修提取；有效证明时间在5年（含）以内或15年（含）以上。","物业费：每自然年度限一次，额度不累计、不结转。"],"renovation":{"status":"verified","method":"area_rate_cap","ratePerSqm":1500,"maxYuan":150000,"oncePerPerson":true,"familyOneHome":true,"docTitle":"关于支持自住住房装修提取住房公积金有关事项的通知","effectiveNote":"2026-11-04 发布之日起施行（媒体转述）","summary":"建筑面积×1500元/㎡，家庭合计最高不超过15万元。","sources":[{"title":"第一财经转述郑州公积金装修提取通知","url":"https://www.yicai.com/news/103425923.html","fetchedAt":"2026-11-06"},{"title":"中原网：郑州支持自住住房装修提取（条件与FAQ）","url":"https://zynews.cn/yaowen/2026/11/04/209243.html","fetchedAt":"2026-11-06"},{"title":"郑州公积金中心征求意见稿通告（背景）","url":"https://zzgjj.zhengzhou.gov.cn/suggesting/10270626.jhtml","fetchedAt":"2026-11-06"}]},"propertyFee":{"status":"verified","method":"area_tiers","docNo":"郑公积金〔2026〕24号","docTitle":"郑州住房公积金管理中心关于优化调整住房公积金提取政策的通知","issuedDate":"2026-09-28","publishedDate":"2026-09-29","frequency":"每自然年度每家庭一套、每人一次，双方合计≤档位额度；不累计不结转","tiers":[{"maxSqmInclusive":90,"annualYuan":2400,"label":"≤90㎡"},{"maxSqmInclusive":144,"annualYuan":3800,"label":"90–144㎡（含）"},{"maxSqmInclusive":null,"annualYuan":4300,"label":">144㎡"}],"related":{"heatingTiers":[{"maxSqmInclusive":90,"annualYuan":2100},{"maxSqmInclusive":144,"annualYuan":3200},{"maxSqmInclusive":null,"annualYuan":3700}],"parkingManagementYuan":1500},"summary":"按建筑面积分三档核定年度物业费提取上限：2400 / 3800 / 4300 元。","sources":[{"title":"郑州公积金中心原文（含文号郑公积金〔2026〕24号）","url":"https://zzgjj.zhengzhou.gov.cn/extract/10273615.jhtml","fetchedAt":"2026-11-06"},{"title":"郑州市政务公开全文","url":"https://public.zhengzhou.gov.cn/D0105Y/10273511.jhtml","fetchedAt":"2026-11-06"},{"title":"政策解读（政务公开）","url":"https://public.zhengzhou.gov.cn/D3602Y/10273543.jhtml","fetchedAt":"2026-11-06"}]}},{"id":"nanjing","name":"南京","province":"苏","default":false,"calculable":true,"notes":["装修：发票开具起1年内申请；同一家庭同一套住房限一次；每㎡≤1000元且家庭合计≤15万。","物业费：有发票按实付且年≤5000；无发票年≤1000；每自然年度一次。"],"renovation":{"status":"verified","method":"min_invoice_area_rate_cap","ratePerSqm":1000,"maxYuan":150000,"requiresInvoice":true,"summary":"min(发票金额, 面积×1000, 15万元)。","sources":[{"title":"南京市政府：装修与物业费落地细则","url":"https://www.nanjing.gov.cn/msxx/202609/t20260921_5914743.html","fetchedAt":"2026-11-06"}]},"propertyFee":{"status":"verified","method":"invoice_or_flat_cap","withInvoiceMaxYuan":5000,"withoutInvoiceMaxYuan":1000,"frequency":"同一家庭每自然年度限一次","summary":"有发票：min(实付, 5000)；无发票：上限1000。","sources":[{"title":"南京市政府：装修与物业费落地细则","url":"https://www.nanjing.gov.cn/msxx/202609/t20260921_5914743.html","fetchedAt":"2026-11-06"},{"title":"南京公积金中心：如何提取支付物业费","url":"https://www.nanjing.gov.cn/zzb/hdhy/hygq_72666/202610/t20261021_6022765.html","fetchedAt":"2026-11-06"}]}},{"id":"hangzhou","name":"杭州","province":"浙","default":false,"calculable":true,"notes":["装修（资质企业发票）：不超过发票价税合计，最高25万；产权满6个月。","装修（15年+适老化/翻新定额）：面积×1000元/㎡，可不提供发票合同。","再次装修提取须距上次满10年。","物业费：家庭名下1套，每年1次，合计≤实付且≤10000元。"],"renovation":{"status":"verified","method":"hangzhou_dual","invoiceMaxYuan":250000,"agingRatePerSqm":1000,"docNo":"杭房公委〔2026〕6号","summary":"发票路径最高25万；15年+适老化/翻新按面积×1000。","sources":[{"title":"杭州市人民政府公报：完善使用政策解读","url":"https://zfgb.hangzhou.gov.cn/15/110220263/t116220263104/530811.shtml","fetchedAt":"2026-11-06"},{"title":"每经网转述：最高不超过25万元","url":"https://www.nbd.com.cn/articles/2026-10-15/4605017.html","fetchedAt":"2026-11-06"}]},"propertyFee":{"status":"verified","method":"min_bill_cap","annualMaxYuan":10000,"frequency":"每年家庭1套1次；当年未提不补办","summary":"min(12个月实付物业相关支出, 10000元)。","sources":[{"title":"杭州网：物业费提取线上办理已开通","url":"https://hznews.hangzhou.com.cn/chengshi/content/2026-05/07/content_9217430.htm","fetchedAt":"2026-11-06"}]}},{"id":"jinan","name":"济南","province":"鲁","default":false,"calculable":true,"calculableScenes":["propertyFee"],"notes":["物业费：夫妻合计每年≤2500元。","装修提取本地额度细则本轮未核到官方全文 → 标待核对，本页暂不可算装修。","个贷率达90%时物业费等提取可能暂缓。"],"renovation":{"status":"pending","method":null,"summary":"待核对：尚未检索到济南装修提取明确额度细则。","sources":[]},"propertyFee":{"status":"verified","method":"flat_cap","annualMaxYuan":2500,"frequency":"每自然年度一次","summary":"缴存人及配偶合计年度提取额度不超过2500元。","sources":[{"title":"大众新闻/全景山东：济南公积金新政（2026-04-20起）","url":"https://sd.sdnews.com.cn/yw/202604/t20260421_4667323.htm","fetchedAt":"2026-11-06"}]}},{"id":"shanghai","name":"上海","province":"沪","default":false,"calculable":false,"notes":["国家条例已允许装修/物业费提取，但上海本地额度、材料、频次细则本轮未核到可计算口径。","对照展示，暂不开放测算。"],"renovation":{"status":"pending","method":null,"summary":"待核对：本地实施细则未核到。","sources":[]},"propertyFee":{"status":"pending","method":null,"summary":"待核对：本地实施细则未核到。","sources":[]}}]};
 
   let DATA = EMBEDDED;
   let scene = "renovation";
@@ -306,7 +336,17 @@
   }
 
   function sceneRule(city) {
-    return scene === "renovation" ? city.renovation : city.propertyFee;
+    if (scene === "renovation") return city.renovation;
+    if (scene === "propertyFee") return city.propertyFee;
+    if (scene === "rentUnregistered") return city.rentUnregistered;
+    return null;
+  }
+
+  function sceneLabel(s) {
+    if (s === "renovation") return "装修";
+    if (s === "propertyFee") return "物业费";
+    if (s === "rentUnregistered") return "无备案租房";
+    return s;
   }
 
   function canCalc(city) {
@@ -325,7 +365,8 @@
       opt.value = c.id;
       const reno = c.renovation?.status === "verified" ? "装✓" : "装待核";
       const prop = c.propertyFee?.status === "verified" ? "物✓" : "物待核";
-      opt.textContent = `${c.name}（${c.province}）· ${reno}/${prop}`;
+      const rent = c.rentUnregistered?.status === "verified" ? "/租✓" : "";
+      opt.textContent = `${c.name}（${c.province}）· ${reno}/${prop}${rent}`;
       if (c.default) opt.selected = true;
       sel.appendChild(opt);
     });
@@ -338,9 +379,11 @@
       const tr = document.createElement("tr");
       const r = c.renovation || {};
       const p = c.propertyFee || {};
+      const rent = c.rentUnregistered || {};
       tr.innerHTML = `<td><b>${c.name}</b></td>
         <td>${r.status === "verified" ? (r.summary || "已核") : '<span class="pending">待核对</span>'}</td>
-        <td>${p.status === "verified" ? (p.summary || "已核") : '<span class="pending">待核对</span>'}</td>`;
+        <td>${p.status === "verified" ? (p.summary || "已核") : '<span class="pending">待核对</span>'}</td>
+        <td>${rent.status === "verified" ? (rent.summary || "已核") : "本页暂不测算"}</td>`;
       tb.appendChild(tr);
     });
   }
@@ -350,25 +393,43 @@
     const rule = sceneRule(city);
     const ok = canCalc(city);
     const src = (rule?.sources || []).slice(0, 2).map(s => `<a href="${s.url}" target="_blank" rel="noopener">${s.title}</a>`).join("； ") || "—";
+    const notesForScene = scene === "rentUnregistered"
+      ? (city.notes || []).filter(n => n.includes("租房") || n.includes("备案")).slice(0, 2)
+      : (city.notes || []).slice(0, 2);
     document.getElementById("cityMeta").innerHTML =
-      `<div><b>${city.name}</b> · ${scene === "renovation" ? "装修" : "物业费"}：` +
-      (rule?.status === "verified" ? "已核对" : '<span class="pending">待核对</span>') +
-      `</div><div style="margin-top:6px">${rule?.summary || ""}</div>` +
+      `<div><b>${city.name}</b> · ${sceneLabel(scene)}：` +
+      (rule?.status === "verified" ? "已核对" : (scene === "rentUnregistered" ? "本页暂不测算" : '<span class="pending">待核对</span>')) +
+      `</div><div style="margin-top:6px">${rule?.summary || (scene === "rentUnregistered" ? "无备案租房测算目前仅开放广州（穗公积金中心规字〔2026〕4号）。" : "")}</div>` +
       (rule?.docNo ? `<div style="margin-top:6px">文号：<b>${rule.docNo}</b></div>` : "") +
-      `<div style="margin-top:6px">要点：${(city.notes || []).slice(0, 2).join(" / ")}</div>` +
+      (notesForScene.length ? `<div style="margin-top:6px">要点：${notesForScene.join(" / ")}</div>` : "") +
       `<div style="margin-top:6px">来源：${src}</div>`;
 
-    document.getElementById("hzModeWrap").classList.toggle("hidden", !(scene === "renovation" && city.id === "hangzhou" && ok));
-    document.getElementById("invoiceWrap").classList.toggle("hidden", scene !== "renovation");
+    const gzReno = scene === "renovation" && city.id === "guangzhou" && ok;
+    const hzReno = scene === "renovation" && city.id === "hangzhou" && ok;
+    document.getElementById("hzModeWrap").classList.toggle("hidden", !hzReno);
+    document.getElementById("gzModeWrap").classList.toggle("hidden", !gzReno);
+    const gzOwned8 = gzReno && document.getElementById("gzMode").value === "owned8";
+    document.getElementById("invoiceWrap").classList.toggle("hidden", scene !== "renovation" || gzOwned8);
     document.getElementById("njInvoiceRow").classList.toggle("hidden", !(scene === "propertyFee" && city.id === "nanjing"));
     document.getElementById("fieldsReno").classList.toggle("hidden", scene !== "renovation");
     document.getElementById("fieldsProp").classList.toggle("hidden", scene !== "propertyFee");
+    document.getElementById("fieldsRent").classList.toggle("hidden", scene !== "rentUnregistered");
+    document.getElementById("propBillWrap").classList.toggle("hidden", scene === "propertyFee" && city.id === "guangzhou");
+
+    const hint = document.getElementById("invoiceHint");
+    if (gzReno) hint.textContent = "须为具有建筑装修装饰工程专业承包资质企业开具的房屋装修发票金额。";
+    else if (city.id === "nanjing" || city.id === "hangzhou") hint.textContent = "南京/杭州发票路径需要填写发票金额。";
+    else hint.textContent = "郑州定额测算可不填；南京/杭州发票路径需要；广州发票路径须填资质企业装修发票。";
 
     const pending = document.getElementById("pendingHint");
     const btn = document.getElementById("btnCalc");
     if (!ok) {
       pending.classList.remove("hidden");
-      pending.innerHTML = `<span class="pending">当前城市本场景暂不可算</span>：细则待核对或未开放。可切换回<strong>郑州</strong>，或改选另一场景。`;
+      if (scene === "rentUnregistered") {
+        pending.innerHTML = `<span class="pending">当前城市本场景暂不可算</span>：无备案租房测算目前仅开放<strong>广州</strong>（穗公积金中心规字〔2026〕4号）。可改选广州，或改选装修/物业费场景。`;
+      } else {
+        pending.innerHTML = `<span class="pending">当前城市本场景暂不可算</span>：细则待核对或未开放。可切换到<strong>广州</strong>或其他可测算城市，或改选另一场景。`;
+      }
       btn.disabled = true;
     } else {
       pending.classList.add("hidden");
@@ -411,6 +472,22 @@
         notes.push("杭州发票路径：须资质企业装修合同+增值税发票；总额不超过发票价税合计且≤25万。");
         notes.push("再次装修提取须距上次满10年。");
       }
+    } else if (rule.method === "guangzhou_dual") {
+      const mode = document.getElementById("gzMode").value;
+      if (mode === "owned8") {
+        cap = area * rule.noInvoiceRatePerSqm;
+        detail = `${area}㎡ × ${rule.noInvoiceRatePerSqm} 元/㎡（无该发票但持有住房满8年）→ ${money(cap)}`;
+        notes.push("广州口径（第四条第二项）：未能提供具有建筑装修装饰工程专业承包资质企业开具的房屋装修发票，但持有住房满8年的，每套住房提取总额不超过房屋建筑面积×800元/㎡。");
+        notes.push("条件要点：本市行政区域内自住住房；2026年9月20日（含）以后装修；一次性提取；同一缴存人再次申请需间隔满8年。");
+      } else {
+        if (!(invoice > 0)) throw new Error("广州发票路径请填写具有建筑装修装饰工程专业承包资质企业开具的房屋装修发票金额");
+        const byArea = area * rule.invoiceRatePerSqm;
+        cap = Math.min(invoice, byArea);
+        detail = `min(发票 ${money(invoice)}, 面积×${rule.invoiceRatePerSqm}=${money(byArea)}) → ${money(cap)}`;
+        notes.push("广州口径（第四条第一项）：提供具有建筑装修装饰工程专业承包资质企业开具的房屋装修发票的，每套住房提取总额不超过发票金额，且不超过房屋建筑面积×1800元/㎡。");
+        notes.push("材料要点：上述资质企业开具的房屋装修发票。条件：本市行政区域内自住住房；2026年9月20日（含）以后装修；一次性提取；同一缴存人再次申请需间隔满8年。");
+      }
+      notes.push("其他材料与办理入口请以广州住房公积金管理中心及公文为准，本页不对接办理。");
     } else {
       throw new Error("该城市装修规则待核对");
     }
@@ -478,12 +555,43 @@
         detail = `夫妻合计年度上限 ${money(cap)}`;
       }
       notes.push("济南：每自然年度一次；个贷率过高时业务可能暂缓。");
+    } else if (rule.method === "area_rate_times_months") {
+      if (!(area > 0)) throw new Error("请填写有效建筑面积");
+      cap = area * rule.ratePerSqmPerMonth * rule.months;
+      detail = `${area}㎡ × ${rule.ratePerSqmPerMonth} 元/㎡ × ${rule.months} = ${money(cap)}`;
+      notes.push("广州口径（第五条）：每套住房物业费提取总额按房屋建筑面积×3元/㎡×12标准核算。");
+      notes.push("频次：每个自然年度可申请一次，当年未提取额度不结转至次年。公文未要求发票。已经办理其他提取业务的缴存人，符合条件的可以同时申请办理物业费提取。");
+      notes.push("条件要点：本市行政区域内自住住房物业费。其他材料与办理入口请以广州住房公积金管理中心及公文为准，本页不对接办理。");
     } else {
       throw new Error("该城市物业费规则待核对");
     }
 
     notes.push("结果仅供参考，以当地公积金中心为准。");
     return { cap, detail, notes };
+  }
+
+  function calcRent(city) {
+    const rule = city.rentUnregistered;
+    if (!rule || rule.method !== "per_person_monthly_cap") throw new Error("该城市无备案租房规则待核对或未开放");
+    const multi = document.getElementById("rentMultiChild").checked;
+    const persons = Number(document.getElementById("rentPersons").value) || 1;
+    if (persons !== 1 && persons !== 2) throw new Error("测算缴存人数请选择 1 人或 2 人");
+    const monthlyEach = multi ? rule.multiChildMonthlyYuan : rule.monthlyYuan;
+    const monthly = monthlyEach * persons;
+    const annual = monthly * 12;
+    const who = persons === 2 ? `2 人合计` : "1 人";
+    const family = multi ? "符合多孩条件的家庭" : "普通情形";
+    const detail = `${family}：月提取上限 ${money(monthlyEach)}/人 × ${persons} 人 = ${money(monthly)}/月；若全年按月足额提取、当年未提取不结转，年上限约 ${money(annual)}`;
+    const notes = [
+      multi
+        ? "广州口径（第二条第二项）：未办理租赁合同登记备案且在本市行政区域内无自住住房的，生育二孩及以上（至少有一个未成年子女）的家庭，月提取额不超过4000元/人。"
+        : "广州口径（第二条第二项）：未办理租赁合同登记备案且在本市行政区域内无自住住房的，月提取额不超过3000元/人。",
+      "当年未提取额度不结转至次年。公文同时明确：购、租房提取住房公积金的频次调整为每月提取一次。",
+      "条件要点：未办理租赁合同登记备案；在本市行政区域内无自住住房。多孩口径须符合「生育二孩及以上（至少有一个未成年子女）」。",
+      "已备案租房（月提取总额不超过每月租金且不超过8000元，多孩家庭不超过10000元）及公租房（不超过每月租金）见公文第二条，本页不做完整测算。",
+      "其他材料与办理入口请以广州住房公积金管理中心及公文为准，本页不对接办理。"
+    ];
+    return { cap: monthly, annual, detail, notes, unitSuffix: `/月（${who}）` };
   }
 
   function bumpCalc() {
@@ -502,20 +610,33 @@
     scene = next;
     document.getElementById("tabReno").classList.toggle("active", scene === "renovation");
     document.getElementById("tabProp").classList.toggle("active", scene === "propertyFee");
+    document.getElementById("tabRent").classList.toggle("active", scene === "rentUnregistered");
     document.getElementById("tabReno").setAttribute("aria-selected", scene === "renovation" ? "true" : "false");
     document.getElementById("tabProp").setAttribute("aria-selected", scene === "propertyFee" ? "true" : "false");
+    document.getElementById("tabRent").setAttribute("aria-selected", scene === "rentUnregistered" ? "true" : "false");
     updateCityMeta();
     document.getElementById("results").classList.remove("show");
+  }
+
+  function officialLinkHtml(rule) {
+    const src = (rule?.sources || [])[0];
+    if (!src) return "";
+    const doc = rule.docNo ? `${rule.docNo}` : "官方文件";
+    return `依据：<a href="${src.url}" target="_blank" rel="noopener">${doc}（官网全文）</a>。本结果为非官方参考测算，以当地公积金中心审核为准。`;
   }
 
   function runCalc() {
     const city = getCity();
     try {
       if (!canCalc(city)) throw new Error("当前城市本场景暂不可算");
-      const out = scene === "renovation" ? calcRenovation(city) : calcProperty(city);
+      let out;
+      if (scene === "renovation") out = calcRenovation(city);
+      else if (scene === "propertyFee") out = calcProperty(city);
+      else out = calcRent(city);
+      const labelScene = sceneLabel(scene);
       document.getElementById("resultLabel").textContent =
-        `${city.name} · ${scene === "renovation" ? "装修" : "物业费"}可提取上限（估算）`;
-      document.getElementById("resultVal").textContent = money(out.cap);
+        `${city.name} · ${labelScene}可提取上限（估算，非官方参考）`;
+      document.getElementById("resultVal").textContent = money(out.cap) + (out.unitSuffix || "");
       document.getElementById("resultSub").textContent = out.detail;
       const ul = document.getElementById("resultNotes");
       ul.innerHTML = "";
@@ -524,6 +645,8 @@
         li.textContent = t;
         ul.appendChild(li);
       });
+      const off = document.getElementById("resultOfficial");
+      off.innerHTML = officialLinkHtml(sceneRule(city));
       document.getElementById("results").classList.add("show");
       bumpCalc();
     } catch (err) {
@@ -541,8 +664,10 @@
     document.getElementById("city").addEventListener("change", updateCityMeta);
     document.getElementById("tabReno").addEventListener("click", () => setScene("renovation"));
     document.getElementById("tabProp").addEventListener("click", () => setScene("propertyFee"));
+    document.getElementById("tabRent").addEventListener("click", () => setScene("rentUnregistered"));
     document.getElementById("btnCalc").addEventListener("click", runCalc);
     document.getElementById("hzMode").addEventListener("change", () => {});
+    document.getElementById("gzMode").addEventListener("change", updateCityMeta);
 
     document.getElementById("leadForm").addEventListener("submit", (e) => {
       e.preventDefault();

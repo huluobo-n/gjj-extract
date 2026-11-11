@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "公积金装修/物业费提取额度测算",
-    "fetchedAt": "2026-11-06",
+    "title": "公积金提取额度测算（装修/物业费/广州无备案租房）",
+    "fetchedAt": "2026-11-11",
     "timezone": "Asia/Shanghai",
-    "disclaimer": "结果仅供参考，以当地公积金中心为准。本页非官方产品。",
+    "disclaimer": "结果为非官方参考测算，仅供参考，以当地公积金中心为准。本页非官方产品。",
     "nationalOrdinance": {
       "name": "新修订《住房公积金管理条例》",
       "effectiveDate": "2026-09-20",
@@ -29,10 +29,93 @@
   },
   "cities": [
     {
+      "id": "guangzhou",
+      "name": "广州",
+      "province": "粤",
+      "default": true,
+      "calculable": true,
+      "calculableScenes": [
+        "renovation",
+        "propertyFee",
+        "rentUnregistered"
+      ],
+      "notes": [
+        "装修：2026年9月20日（含）以后装修本市行政区域内自住住房；一次性提取；同一缴存人再次申请需间隔满8年。",
+        "物业费：每套按房屋建筑面积×3元/㎡×12核算；每个自然年度可申请一次，当年未提取额度不结转至次年；公文未要求发票。已经办理其他提取业务的缴存人，符合条件的可以同时申请办理物业费提取。",
+        "无备案租房：未办理租赁合同登记备案且在本市行政区域内无自住住房；月提取额不超过3000元/人，生育二孩及以上（至少有一个未成年子女）的家庭不超过4000元/人；当年未提取额度不结转至次年。",
+        "已备案租房（不超过月租金且不超过8000元，多孩家庭不超过10000元）及公租房（不超过每月租金）见公文第二条，本页不做完整测算。本页只做测算、材料要点并指向官网，不对接办理。"
+      ],
+      "renovation": {
+        "status": "verified",
+        "method": "guangzhou_dual",
+        "invoiceRatePerSqm": 1800,
+        "noInvoiceOwnedYears": 8,
+        "noInvoiceRatePerSqm": 800,
+        "once": true,
+        "reapplyIntervalYears": 8,
+        "renovationFrom": "2026-09-20",
+        "docNo": "穗公积金中心规字〔2026〕4号",
+        "docTitle": "广州住房公积金管理中心关于优化住房公积金提取政策的通知",
+        "effectiveDate": "2026-11-10",
+        "expiryDate": "2031-11-10",
+        "summary": "有资质企业装修发票：不超过发票金额且不超过面积×1800元/㎡；无该发票但持有住房满8年：不超过面积×800元/㎡。一次性，再次申请间隔满8年。",
+        "sources": [
+          {
+            "title": "广州市人民政府：穗公积金中心规字〔2026〕4号（全文）",
+            "url": "https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html",
+            "fetchedAt": "2026-11-11"
+          }
+        ]
+      },
+      "propertyFee": {
+        "status": "verified",
+        "method": "area_rate_times_months",
+        "ratePerSqmPerMonth": 3,
+        "months": 12,
+        "invoiceRequired": false,
+        "frequency": "每个自然年度可申请一次，当年未提取额度不结转至次年",
+        "canCombineWithOtherExtracts": true,
+        "docNo": "穗公积金中心规字〔2026〕4号",
+        "docTitle": "广州住房公积金管理中心关于优化住房公积金提取政策的通知",
+        "effectiveDate": "2026-11-10",
+        "expiryDate": "2031-11-10",
+        "summary": "每套住房按房屋建筑面积×3元/㎡×12核算；公文未要求发票。",
+        "sources": [
+          {
+            "title": "广州市人民政府：穗公积金中心规字〔2026〕4号（全文）",
+            "url": "https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html",
+            "fetchedAt": "2026-11-11"
+          }
+        ]
+      },
+      "rentUnregistered": {
+        "status": "verified",
+        "method": "per_person_monthly_cap",
+        "monthlyYuan": 3000,
+        "multiChildMonthlyYuan": 4000,
+        "multiChildNote": "生育二孩及以上（至少有一个未成年子女）的家庭",
+        "conditions": "未办理租赁合同登记备案且在本市行政区域内无自住住房",
+        "frequency": "购、租房提取频次为每月一次；当年未提取额度不结转至次年",
+        "docNo": "穗公积金中心规字〔2026〕4号",
+        "docTitle": "广州住房公积金管理中心关于优化住房公积金提取政策的通知",
+        "effectiveDate": "2026-11-10",
+        "expiryDate": "2031-11-10",
+        "summary": "无备案且本市无自住住房：月提取额不超过3000元/人；符合多孩条件的家庭不超过4000元/人。",
+        "relatedNote": "已备案租房、公租房见公文第二条，本页不做完整测算。",
+        "sources": [
+          {
+            "title": "广州市人民政府：穗公积金中心规字〔2026〕4号（全文）",
+            "url": "https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html",
+            "fetchedAt": "2026-11-11"
+          }
+        ]
+      }
+    },
+    {
       "id": "zhengzhou",
       "name": "郑州",
       "province": "豫",
-      "default": true,
+      "default": false,
       "calculable": true,
       "notes": [
         "每户家庭仅可选一套自住住房办理装修或物业类提取。",
