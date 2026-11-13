@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "公积金提取额度测算（装修/物业费/广州无备案租房）",
-    "fetchedAt": "2026-11-11",
+    "fetchedAt": "2026-11-13",
     "timezone": "Asia/Shanghai",
     "disclaimer": "结果为非官方参考测算，仅供参考，以当地公积金中心为准。本页非官方产品。",
     "nationalOrdinance": {
@@ -63,7 +63,7 @@
           {
             "title": "广州市人民政府：穗公积金中心规字〔2026〕4号（全文）",
             "url": "https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html",
-            "fetchedAt": "2026-11-11"
+            "fetchedAt": "2026-11-13"
           }
         ]
       },
@@ -84,7 +84,7 @@
           {
             "title": "广州市人民政府：穗公积金中心规字〔2026〕4号（全文）",
             "url": "https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html",
-            "fetchedAt": "2026-11-11"
+            "fetchedAt": "2026-11-13"
           }
         ]
       },
@@ -106,21 +106,26 @@
           {
             "title": "广州市人民政府：穗公积金中心规字〔2026〕4号（全文）",
             "url": "https://www.gz.gov.cn/gfxwj/sbmgfxwj/gzzfgjjglzx/content/post_11094824.html",
-            "fetchedAt": "2026-11-11"
+            "fetchedAt": "2026-11-13"
           }
         ]
       }
     },
     {
       "id": "zhengzhou",
-      "name": "郑州",
+      "name": "郑州市公积金",
       "province": "豫",
       "default": false,
       "calculable": true,
+      "calculableScenes": [
+        "renovation",
+        "propertyFee"
+      ],
       "notes": [
-        "每户家庭仅可选一套自住住房办理装修或物业类提取。",
-        "装修：住房须满6个月且未办过装修提取；有效证明时间在5年（含）以内或15年（含）以上。",
-        "物业费：每自然年度限一次，额度不累计、不结转。"
+        "与「河南省直」同城不同口径，请按实际缴存系统选择。",
+        "装修：住房须满6个月且未办过装修提取；有效证明时间在5年（含）以内或15年（含）以上；每户一套、夫妻各一次，合计不超15万。家庭有逾期公贷须先结清、恢复正常还款。",
+        "物业费/取暖费/车位管理费：每个家庭仅限选定一套本市自住住房；夫妻双方每个自然年度每人仅可提取一次，双方提取总额不超过规定提取额度。90㎡（含）归入第一档。",
+        "同文件另有购房契税提取（完税之日起一年内、合计不超过实缴契税），本页不做完整测算。"
       ],
       "renovation": {
         "status": "verified",
@@ -129,85 +134,217 @@
         "maxYuan": 150000,
         "oncePerPerson": true,
         "familyOneHome": true,
-        "docTitle": "关于支持自住住房装修提取住房公积金有关事项的通知",
-        "effectiveNote": "2026-11-04 发布之日起施行（媒体转述）",
+        "docTitle": "郑州住房公积金管理中心关于支持自住住房装修提取住房公积金有关事项的通知",
+        "effectiveDate": "2026-11-04",
+        "effectiveNote": "2026-11-04 发布之日起施行",
         "summary": "建筑面积×1500元/㎡，家庭合计最高不超过15万元。",
+        "conditionNotes": [
+          "郑州市公积金口径：按房屋登记建筑面积（购房合同、不动产权证或房屋所有权证载明面积）×1500元/㎡，最高不超过15万元。",
+          "条件：缴存人及配偶在郑州市行政区域内拥有自住住房满6个月（含）以上，且未办理过自住住房装修提取；有效住房证明材料载明的时间在5年（含）以内或15年（含）以上；每户家庭仅可选择一套自住住房，夫妻双方每人仅限提取一次，合计不超过最高限额；家庭存在逾期公积金贷款的，须先结清逾期、恢复正常还款。",
+          "材料要点：房屋所有权人提供本人身份证、购房有效证明材料和本人银行一类储蓄卡；配偶申请另需夫妻双方身份证、结婚证和本人一类储蓄卡。能通过大数据联网核验的材料免予提交。线上可经「郑好办」APP公积金专区办理。本页不对接办理。"
+        ],
         "sources": [
           {
-            "title": "第一财经转述郑州公积金装修提取通知",
-            "url": "https://www.yicai.com/news/103425923.html",
-            "fetchedAt": "2026-11-06"
+            "title": "郑州公积金中心原文（2026-11-04）",
+            "url": "https://zzgjj.zhengzhou.gov.cn/extract/10333351.jhtml",
+            "fetchedAt": "2026-11-13"
           },
           {
-            "title": "中原网：郑州支持自住住房装修提取（条件与FAQ）",
-            "url": "https://zynews.cn/yaowen/2026/11/04/209243.html",
-            "fetchedAt": "2026-11-06"
+            "title": "郑州市政务公开全文",
+            "url": "https://public.zhengzhou.gov.cn/D0105Y/10332787.jhtml",
+            "fetchedAt": "2026-11-13"
           },
           {
-            "title": "郑州公积金中心征求意见稿通告（背景）",
-            "url": "https://zzgjj.zhengzhou.gov.cn/suggesting/10270626.jhtml",
-            "fetchedAt": "2026-11-06"
+            "title": "澎湃新闻转述（含FAQ，非正式原文）",
+            "url": "https://www.thepaper.cn/newsDetail_forward_34405915",
+            "fetchedAt": "2026-11-13"
           }
         ]
       },
       "propertyFee": {
         "status": "verified",
-        "method": "area_tiers",
+        "method": "zhengzhou_bundle",
         "docNo": "郑公积金〔2026〕24号",
         "docTitle": "郑州住房公积金管理中心关于优化调整住房公积金提取政策的通知",
         "issuedDate": "2026-09-28",
         "publishedDate": "2026-09-29",
-        "frequency": "每自然年度每家庭一套、每人一次，双方合计≤档位额度；不累计不结转",
+        "frequency": "每个家庭仅限选定一套本市自住住房；夫妻双方每个自然年度每人仅可提取一次，双方提取总额不超过规定提取额度",
         "tiers": [
           {
             "maxSqmInclusive": 90,
             "annualYuan": 2400,
-            "label": "≤90㎡"
+            "heatingYuan": 2100,
+            "label": "≤90㎡",
+            "bundleYuan": 6000
           },
           {
             "maxSqmInclusive": 144,
             "annualYuan": 3800,
-            "label": "90–144㎡（含）"
+            "heatingYuan": 3200,
+            "label": "90–144㎡（含）",
+            "bundleYuan": 8500
           },
           {
             "maxSqmInclusive": null,
             "annualYuan": 4300,
-            "label": ">144㎡"
+            "heatingYuan": 3700,
+            "label": ">144㎡",
+            "bundleYuan": 9500
           }
         ],
-        "related": {
-          "heatingTiers": [
-            {
-              "maxSqmInclusive": 90,
-              "annualYuan": 2100
-            },
-            {
-              "maxSqmInclusive": 144,
-              "annualYuan": 3200
-            },
-            {
-              "maxSqmInclusive": null,
-              "annualYuan": 3700
-            }
-          ],
-          "parkingManagementYuan": 1500
-        },
-        "summary": "按建筑面积分三档核定年度物业费提取上限：2400 / 3800 / 4300 元。",
+        "parkingManagementYuan": 1500,
+        "summary": "按面积分三档定额：物业费 2400/3800/4300、取暖费 2100/3200/3700，车位管理费家庭年度定额1500；三项都选合计 6000/8500/9500 元。",
+        "deedTaxNote": "同文件另有购房契税提取（完税之日起一年内、合计不超过实缴契税），本页不做完整测算。",
         "sources": [
           {
-            "title": "郑州公积金中心原文（含文号郑公积金〔2026〕24号）",
+            "title": "郑州公积金中心原文（郑公积金〔2026〕24号）",
             "url": "https://zzgjj.zhengzhou.gov.cn/extract/10273615.jhtml",
-            "fetchedAt": "2026-11-06"
+            "fetchedAt": "2026-11-13"
           },
           {
             "title": "郑州市政务公开全文",
             "url": "https://public.zhengzhou.gov.cn/D0105Y/10273511.jhtml",
             "fetchedAt": "2026-11-06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "henan_shengzhi",
+      "name": "河南省直",
+      "province": "豫·省直",
+      "default": false,
+      "calculable": true,
+      "calculableScenes": [
+        "renovation"
+      ],
+      "notes": [
+        "与「郑州市公积金」同城不同口径，仅适用于河南省省直机关住房资金管理中心缴存职工。",
+        "本次通知只规定自住住房装修提取，不套用市公积金的物业费/取暖费/车位管理费打包。",
+        "装修：郑州市域内自住满6个月且未办过装修提取；有效证明时间在5年（含）以内或15年（含）以上；面积×1500、最高15万；每户限一套、夫妻各一次，合计不超上限；有逾期公贷须先结清、恢复正常还款。"
+      ],
+      "renovation": {
+        "status": "verified",
+        "method": "area_rate_cap",
+        "ratePerSqm": 1500,
+        "maxYuan": 150000,
+        "oncePerPerson": true,
+        "familyOneHome": true,
+        "docTitle": "河南省省直机关住房资金管理中心关于支持自住住房装修提取住房公积金有关事项的通知",
+        "effectiveDate": "2026-11-11",
+        "effectiveNote": "2026-11-11 发布之日起执行",
+        "summary": "建筑面积×1500元/㎡，最高15万元。本通知仅规定装修提取。",
+        "conditionNotes": [
+          "河南省直口径：按房屋登记建筑面积（购房合同、不动产权证或房屋所有权证载明面积）×1500元/㎡，最高不超过15万元。",
+          "条件：缴存人及配偶在郑州市域内拥有自住住房满6个月（含）以上，且未办理过装修提取；有效住房证明材料载明的时间在5年（含）以内或15年（含）以上；每户限一套、夫妻各一次，合计不超过上限；家庭存在逾期公积金贷款的，须先结清逾期、恢复正常还款。",
+          "材料要点（转载公文）：缴存人申请需提供夫妻双方身份证、结婚证、购房有效证明材料和本人银行一类储蓄卡。本页不对接办理。未检索到省直官网正文页，下列来源以完整公文转载与新华网河南频道核应为主，并指向官网首页。"
+        ],
+        "sources": [
+          {
+            "title": "界面新闻：完整公文转载",
+            "url": "https://www.jiemian.com/article/15322788.html",
+            "fetchedAt": "2026-11-13"
           },
           {
-            "title": "政策解读（政务公开）",
-            "url": "https://public.zhengzhou.gov.cn/D3602Y/10273543.jhtml",
-            "fetchedAt": "2026-11-06"
+            "title": "新华网河南频道核应",
+            "url": "http://www.ha.xinhuanet.com/20261112/3b8a387f190f416fbbc93c68f453f670/c.html",
+            "fetchedAt": "2026-11-13"
+          },
+          {
+            "title": "河南省直住房公积金官网首页（本轮未检索到该通知正文页）",
+            "url": "http://www.hnszgjj.com/sitesources/hnszgjj/page_pc/index.html",
+            "fetchedAt": "2026-11-13"
+          }
+        ]
+      },
+      "propertyFee": {
+        "status": "not_applicable",
+        "method": null,
+        "summary": "省直本次通知仅规定装修提取，不套用市公积金物业/取暖/车位打包。本页暂不测算省直物业费。",
+        "sources": [
+          {
+            "title": "界面新闻：完整公文转载",
+            "url": "https://www.jiemian.com/article/15322788.html",
+            "fetchedAt": "2026-11-13"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wuhan",
+      "name": "武汉",
+      "province": "鄂",
+      "default": false,
+      "calculable": true,
+      "calculableScenes": [
+        "renovation",
+        "propertyFee"
+      ],
+      "notes": [
+        "武公中规〔2026〕6号，2026-11-20 起施行。请以该施行日之后的审核口径为准。",
+        "装修：仅限本市自住；家庭无未结清公积金贷款；购房时间5年以内或满15年（含）以上；取得房屋有效证明材料满6个月（含）以上；多套房产时夫妻仅可就其中一套办理一次提取。当年与购房/还贷/租房等其他住房消费类提取互斥。",
+        "物业费：仅限本市自住；家庭无未结清公贷；一个自然年度仅支持一套住房。据实核定，不超过当年物业费发票金额，家庭年度最高6000元；仅可提当年度，不可补提往年、预提后续年度；与租房提取互斥。",
+        "同文件还涉及既有住宅加装电梯、城市更新改造项目提取，本页不做完整测算。"
+      ],
+      "renovation": {
+        "status": "verified",
+        "method": "area_rate_cap",
+        "ratePerSqm": 1500,
+        "maxYuan": 180000,
+        "optionalBalance": true,
+        "oncePerFamilyOneHome": true,
+        "docNo": "武公中规〔2026〕6号",
+        "docTitle": "武汉住房公积金提取管理办法及提取管理实施细则",
+        "effectiveDate": "2026-11-20",
+        "effectiveNote": "2026-11-20 起施行",
+        "summary": "建筑面积×1500元/㎡，家庭上限18万元且不超过账户余额。2026-11-20 起施行。",
+        "conditionNotes": [
+          "武汉口径（2026-11-20 起施行）：按建筑面积×1500元/㎡核定，家庭提取上限18万元，且不超过账户余额。",
+          "条件：仅限本市自住住房；家庭无未结清公积金贷款；购房时间5年以内或满15年（含）以上；取得房屋有效证明材料满6个月（含）以上；家庭名下有多套房产的，夫妻双方仅可就其中一套房产办理一次提取。",
+          "互斥：办理装修提取的自然年度内，不得办理购房、还贷、租房等其他住房消费类提取；反之，当年已办理其他住房消费提取，不可申请装修提取。",
+          "同文件还涉及既有住宅加装电梯、城市更新改造项目提取，本页不做完整测算。材料与办理入口以武汉住房公积金管理中心为准，本页不对接办理。"
+        ],
+        "sources": [
+          {
+            "title": "武汉公积金中心官方解读（主要依据）",
+            "url": "https://gjj.wuhan.gov.cn/zwgk/zc/zcjd/202611/t20261104_2874119.html",
+            "fetchedAt": "2026-11-13"
+          },
+          {
+            "title": "武公中规〔2026〕6号正文登载页（附件下载）",
+            "url": "https://gjj.wuhan.gov.cn/zwgk/zc/gfxwj/202611/t20261104_2874124.html",
+            "fetchedAt": "2026-11-13"
+          }
+        ]
+      },
+      "propertyFee": {
+        "status": "verified",
+        "method": "min_invoice_annual_cap",
+        "annualMaxYuan": 6000,
+        "invoiceRequired": true,
+        "currentYearOnly": true,
+        "exclusiveWithRent": true,
+        "docNo": "武公中规〔2026〕6号",
+        "docTitle": "武汉住房公积金提取管理办法及提取管理实施细则",
+        "effectiveDate": "2026-11-20",
+        "effectiveNote": "2026-11-20 起施行",
+        "frequency": "一个自然年度仅支持一套住房；仅可提取当年度物业费，不可补提往年、预提后续年度",
+        "summary": "据实核定，不超过当年物业费发票金额，家庭年度最高6000元。2026-11-20 起施行。",
+        "conditionNotes": [
+          "武汉口径（2026-11-20 起施行）：据实核定，不超过当年物业费发票金额，家庭年度最高提取6000元。",
+          "条件：仅限本市自住住房；家庭无未结清公积金贷款；一个自然年度仅支持一套住房申请。仅可提取当年度物业费，不可补提往年、预提后续年度。",
+          "互斥：与租房提取业务互斥，年度内已办理租房提取，不能办理物业费提取。材料与办理入口以武汉住房公积金管理中心为准，本页不对接办理。"
+        ],
+        "sources": [
+          {
+            "title": "武汉公积金中心官方解读（主要依据）",
+            "url": "https://gjj.wuhan.gov.cn/zwgk/zc/zcjd/202611/t20261104_2874119.html",
+            "fetchedAt": "2026-11-13"
+          },
+          {
+            "title": "武公中规〔2026〕6号正文登载页（附件下载）",
+            "url": "https://gjj.wuhan.gov.cn/zwgk/zc/gfxwj/202611/t20261104_2874124.html",
+            "fetchedAt": "2026-11-13"
           }
         ]
       }
