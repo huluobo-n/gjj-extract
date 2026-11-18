@@ -135,6 +135,7 @@
     footer .site-nav a:hover { text-decoration: underline; }
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2118305643241262" crossorigin="anonymous"></script>
+  <script src="https://hpn6.com/t/hpn6-stats.js" data-site="gjj" defer></script>
 </head>
 <body>
   <div class="wrap">
@@ -308,7 +309,7 @@
 
     <section class="card">
       <h2>需要「帮算」？留下联系方式</h2>
-      <p class="hint" style="margin-top:0;margin-bottom:12px">本机保存，方便你回访时自查；验证阶段也用于统计留联意愿（不上报服务器）。</p>
+      <p class="hint" style="margin-top:0;margin-bottom:12px">联系方式只保存在本机，不会上传。访问与测算/留联次数会匿名汇总（不含联系方式），便于核对成功线。</p>
       <form class="lead-form" id="leadForm">
         <div class="row">
           <label for="leadContact">微信或手机号</label>
@@ -691,6 +692,7 @@
     const n = Number(localStorage.getItem(CALC_KEY) || "0") + 1;
     localStorage.setItem(CALC_KEY, String(n));
     document.getElementById("calcCount").textContent = String(n);
+    if (window.hpn6track) window.hpn6track("calc");
   }
 
   function refreshLeadCount() {
@@ -784,6 +786,7 @@
       localStorage.setItem(LEAD_KEY, JSON.stringify(leads));
       refreshLeadCount();
       document.getElementById("leadMsg").textContent = "已保存在本机。验证成功线：留联≥5。";
+      if (window.hpn6track) window.hpn6track("lead");
       document.getElementById("leadForm").reset();
     });
   }
